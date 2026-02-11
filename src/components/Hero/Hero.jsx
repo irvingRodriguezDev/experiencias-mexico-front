@@ -16,13 +16,7 @@ const slides = [
     description:
       "When An Unknown Printer Took A Galley Offer Type Area Year Anddey Make Specimen Book",
     price: "$299",
-    image: [
-      { image: Hero1 },
-      { image: Hero2 },
-      { image: Hero3 },
-      { image: Hero4 },
-      { image: Hero5 },
-    ],
+    image: Hero1,
   },
 ];
 
@@ -41,7 +35,7 @@ const Hero = () => {
             <Box
               className='hero-slide'
               style={{
-                backgroundImage: `url(${slide.image.map((i) => i.image)})`,
+                backgroundImage: `url(${slide.image})`,
               }}
             >
               {/* Overlay */}

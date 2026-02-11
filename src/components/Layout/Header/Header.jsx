@@ -9,6 +9,7 @@ import {
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import MenuIcon from "@mui/icons-material/Menu";
 import "./header.css";
+import logo from "../../../assets/image.webp";
 
 const Header = () => {
   return (
@@ -16,7 +17,9 @@ const Header = () => {
       <Toolbar className='header-toolbar'>
         {/* Logo */}
         <Box className='logo'>
-          <Typography variant='h6'>Tourex</Typography>
+          <Typography variant='h6'>
+            <img src={logo} />
+          </Typography>
         </Box>
 
         {/* Navigation */}

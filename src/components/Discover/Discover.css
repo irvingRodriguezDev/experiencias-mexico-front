@@ -18,7 +18,7 @@
 /* Watermark */
 .discover-watermark {
   position: absolute;
-  top: 50%;
+  top: 20%;
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 120px;
@@ -34,6 +34,7 @@
   color: #6c3cff;
   font-weight: 500;
   margin-bottom: 12px;
+  font-family: "Courier New", Courier, monospace;
 }
 
 .discover-title {

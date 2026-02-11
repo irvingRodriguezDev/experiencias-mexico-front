@@ -4,7 +4,7 @@ import image from "../../assets/image (1).webp";
 import image1 from "../../assets/image (2).webp";
 import image2 from "../../assets/image (3).webp";
 import image3 from "../../assets/image (3).webp";
-
+import triplan from "../../assets/triplan.webp";
 const Discover = () => {
   return (
     <Box className='discover'>
@@ -16,11 +16,24 @@ const Discover = () => {
 
       {/* Contenido central */}
       <Box className='discover-content'>
-        <Typography className='discover-watermark'>Tripian</Typography>
+        <Typography className='discover-watermark'>
+          <img src={triplan} />
+        </Typography>
 
-        <Typography className='discover-subtitle'>Most Popular Tour</Typography>
+        <Typography
+          sx={{
+            fontFamily: "fantasy",
+            mt: 8,
+            fontWeight: "bold",
+            color: "#6C3DFF",
+          }}
+        >
+          Most Popular Tour
+        </Typography>
 
-        <Typography className='discover-title'>
+        <Typography
+          sx={{ color: "#000", fontWeight: "bold", fontSize: "30px" }}
+        >
           Let's Discover The World <br />
           With Our Excellent Eyes
         </Typography>
