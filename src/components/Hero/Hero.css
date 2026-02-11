@@ -1,0 +1,103 @@
+.hero {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+}
+
+.hero-swiper {
+  height: 100%;
+}
+
+.hero-slide {
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+/* Overlay EXACTO */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.45),
+    rgba(0, 0, 0, 0.55)
+  );
+  z-index: 1;
+}
+
+/* Contenido centrado */
+.hero-content {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  max-width: 800px;
+  padding: 0 20px;
+}
+
+/* Textos */
+.hero-subtitle {
+  font-size: 14px;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+  opacity: 0.9;
+}
+
+.hero-title {
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+
+.hero-description {
+  font-size: 15px;
+  opacity: 0.85;
+  margin-bottom: 24px;
+}
+
+.hero-price {
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+
+.hero-price span {
+  font-size: 32px;
+  font-weight: 700;
+}
+
+/* Botón */
+.hero-btn {
+  background: #6c3cff !important;
+  color: white !important;
+  padding: 14px 36px !important;
+  border-radius: 30px !important;
+  font-weight: 600 !important;
+}
+
+/* Flechas EXACTAS */
+.swiper-button-prev,
+.swiper-button-next {
+  color: white;
+  background: rgba(255, 255, 255, 0.2);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+}
+
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  font-size: 18px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 42px;
+  }
+}

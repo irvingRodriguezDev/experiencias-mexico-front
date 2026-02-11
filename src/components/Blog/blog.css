@@ -1,0 +1,145 @@
+.blog {
+  padding: 120px 20px;
+  background: #fafafa;
+  position: relative;
+}
+
+.blog-header {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 60px;
+}
+
+.blog-eyebrow {
+  color: #6a35ff;
+  font-style: italic;
+}
+
+.blog-title {
+  font-size: 36px;
+  font-weight: 800;
+  margin: 12px 0;
+}
+
+.blog-subtitle {
+  color: #666;
+}
+
+/* GRID */
+.blog-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 32px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* CARDS */
+.blog-card {
+  background: white;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+}
+
+.blog-card img {
+  width: 100%;
+  border-radius: 12px;
+}
+
+.blog-card.large h3 {
+  font-size: 20px;
+  margin: 16px 0;
+}
+
+.blog-card.horizontal {
+  display: flex;
+  gap: 16px;
+}
+
+.blog-card.horizontal img {
+  width: 140px;
+  height: 100px;
+  object-fit: cover;
+}
+
+/* TAG */
+.tag {
+  display: inline-block;
+  background: #6a35ff;
+  color: white;
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  margin: 12px 0;
+}
+
+.tag.purple {
+  background: #6a35ff;
+}
+
+/* META */
+.meta {
+  display: flex;
+  gap: 8px;
+  font-size: 12px;
+  color: #777;
+}
+
+/* LINK */
+.blog-link {
+  text-align: center;
+  margin: 40px 0 80px;
+}
+
+.blog-link a {
+  color: #6a35ff;
+  font-weight: 600;
+}
+
+/* APP BANNER */
+.app-banner {
+  max-width: 1100px;
+  margin: 0 auto;
+  background: linear-gradient(135deg, #6a35ff, #4c1dff);
+  border-radius: 20px;
+  padding: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+}
+
+.app-info span {
+  opacity: 0.8;
+}
+
+.app-info h3 {
+  font-size: 28px;
+  margin: 16px 0 24px;
+}
+
+.stores img {
+  height: 44px;
+  margin-right: 12px;
+}
+
+.phones {
+  height: 220px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .blog-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .app-banner {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .phones {
+    margin-top: 24px;
+  }
+}

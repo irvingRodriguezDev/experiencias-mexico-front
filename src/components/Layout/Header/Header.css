@@ -1,0 +1,42 @@
+.header {
+  background: rgba(0, 0, 0, 0.25) !important;
+  backdrop-filter: blur(10px);
+  box-shadow: none !important;
+}
+
+.header-toolbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 60px;
+  min-height: 80px;
+}
+
+.logo {
+  font-weight: 700;
+  color: white;
+}
+
+.nav-links button {
+  color: white;
+  text-transform: none;
+  margin: 0 8px;
+  font-size: 15px;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.phone {
+  color: white;
+  font-size: 14px;
+}
+
+.login-btn {
+  border-color: white !important;
+  color: white !important;
+  border-radius: 20px !important;
+  padding: 6px 20px !important;
+}
