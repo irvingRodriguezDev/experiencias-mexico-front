@@ -1,7 +1,10 @@
 import { Box, Typography } from "@mui/material";
 import TourCard from "./TourCard";
 import "./tours.css";
-
+import avion from "../../assets/avion.webp";
+import piramides from "../../assets/piramides.webp";
+import sidney from "../../assets/sidney.webp";
+import venecia from "../../assets/venecia.webp";
 const categories = [
   "Tour",
   "Hotel",
@@ -21,7 +24,7 @@ const tours = [
     rating: 5,
     reviews: 5,
     badge: "New",
-    image: "/tours/1.jpg",
+    image: sidney,
   },
   {
     id: 2,
@@ -33,7 +36,7 @@ const tours = [
     rating: 5,
     reviews: 5,
     badge: "% Offer",
-    image: "/tours/2.jpg",
+    image: venecia,
   },
   {
     id: 3,
@@ -44,7 +47,7 @@ const tours = [
     rating: 5,
     reviews: 5,
     badge: "New",
-    image: "/tours/3.jpg",
+    image: sidney,
   },
   {
     id: 4,
@@ -56,13 +59,16 @@ const tours = [
     rating: 4,
     reviews: 4,
     badge: "Featured",
-    image: "/tours/4.jpg",
+    image: venecia,
   },
 ];
 
 const Tours = () => {
   return (
     <Box className='tours'>
+      <img src={avion} alt='avion' className='tours-avion' />
+      <img src={piramides} alt='piramides' className='tours-piramides' />
+
       <Typography className='tours-subtitle'>
         Most Popular Tour Packages
       </Typography>
@@ -71,7 +77,6 @@ const Tours = () => {
         Something Amazing Waiting For you
       </Typography>
 
-      {/* Tabs */}
       <Box className='tours-tabs'>
         {categories.map((item, i) => (
           <span key={i} className={`tours-tab ${i === 0 ? "active" : ""}`}>
@@ -80,7 +85,6 @@ const Tours = () => {
         ))}
       </Box>
 
-      {/* Grid */}
       <Box className='tours-grid'>
         {tours.map((tour) => (
           <TourCard key={tour.id} tour={tour} />

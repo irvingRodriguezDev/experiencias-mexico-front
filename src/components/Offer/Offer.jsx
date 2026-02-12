@@ -1,7 +1,10 @@
 import { Box, Typography, Button } from "@mui/material";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import "./offer.css";
-
+import lanchas from "../../assets/lanchas.webp";
+import pareja from "../../assets/pareja.webp";
+import WorldIcon from "../icons/WorldIcon";
+import PackageIcon from "../icons/PackageIcon";
 const Offer = () => {
   return (
     <section className='discover'>
@@ -21,7 +24,9 @@ const Offer = () => {
           </Typography>
 
           <Box className='discover-feature'>
-            <span className='icon'>🌍</span>
+            <span className='icon'>
+              <WorldIcon width={60} />
+            </span>
             <Box>
               <h4>Best Travel Agency</h4>
               <p>
@@ -32,7 +37,9 @@ const Offer = () => {
           </Box>
 
           <Box className='discover-feature'>
-            <span className='icon'>🛡️</span>
+            <span className='icon'>
+              <PackageIcon />
+            </span>
             <Box>
               <h4>Secure Journey With Us</h4>
               <p>
@@ -49,20 +56,12 @@ const Offer = () => {
         <Box className='discover-right'>
           <span className='travel-text'>TRAVEL</span>
 
-          <img
-            src='/discover/main.jpg'
-            alt='travel'
-            className='discover-main-img'
-          />
+          <img src={lanchas} alt='travel' className='discover-main-img' />
 
-          <img
-            src='/discover/small.jpg'
-            alt='people'
-            className='discover-small-img'
-          />
+          <img src={pareja} alt='people' className='discover-small-img' />
         </Box>
       </Box>
-
+      <br />
       {/* BOTTOM BANNER */}
       <Box className='discover-banner'>
         <Box className='banner-video'>

@@ -1,5 +1,5 @@
 .hero {
-  height: 50vh;
+  height: 80vh;
   width: 100%;
   position: relative;
 }
@@ -40,25 +40,29 @@
   padding: 0 20px;
 }
 
-/* Textos */
-.hero-subtitle {
+.hero-title {
+  font-weight: bold !important;
+  font-size: 62px; /* Ajusta según prefieras, ya que en el sx tenías 42px */
+  line-height: 1.2;
+  margin-bottom: 16px;
+  color: #fff;
+}
+
+/* Si notas que el color o el margen de los textos no cambia, 
+   usa el prefijo .MuiTypography-root para ganar prioridad */
+.MuiTypography-root.hero-subtitle {
   font-size: 14px;
   letter-spacing: 1px;
   margin-bottom: 12px;
   opacity: 0.9;
+  color: #fff;
 }
 
-.hero-title {
-  font-size: 64px;
-  font-weight: 700;
-  line-height: 1.1;
-  margin-bottom: 16px;
-}
-
-.hero-description {
+.MuiTypography-root.hero-description {
   font-size: 15px;
   opacity: 0.85;
   margin-bottom: 24px;
+  color: #fff;
 }
 
 .hero-price {

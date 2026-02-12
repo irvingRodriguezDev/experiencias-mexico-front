@@ -1,23 +1,24 @@
 import { Box, Typography, Button } from "@mui/material";
 import "./discover.css";
-import image from "../../assets/image (1).webp";
 import image1 from "../../assets/image (2).webp";
 import image2 from "../../assets/image (3).webp";
 import image3 from "../../assets/image (3).webp";
-import triplan from "../../assets/triplan.webp";
+import image5 from "../../assets/image (5).webp";
+import image6 from "../../assets/image (6).webp";
+import Logo from "../../assets/LOGO EXPERIENCIAS MEXICO VECTOR.png";
 const Discover = () => {
   return (
     <Box className='discover'>
       {/* Imagen izquierda superior */}
-      <img src={image} className='discover-img img-top-left' alt='' />
+      <img src={image1} className='discover-img img-top-left' alt='' />
 
       {/* Imagen izquierda inferior */}
-      <img src={image1} className='discover-img img-bottom-left' alt='' />
+      <img src={image2} className='discover-img img-bottom-left' alt='' />
 
       {/* Contenido central */}
       <Box className='discover-content'>
         <Typography className='discover-watermark'>
-          <img src={triplan} />
+          <img src={Logo} width={180} />
         </Typography>
 
         <Typography
@@ -48,10 +49,10 @@ const Discover = () => {
       </Box>
 
       {/* Imagen derecha superior */}
-      <img src={image2} className='discover-img img-top-right' alt='' />
+      <img src={image5} className='discover-img img-top-right' alt='' />
 
       {/* Imagen derecha inferior */}
-      <img src={image3} className='discover-img img-bottom-right' alt='' />
+      <img src={image6} className='discover-img img-bottom-right' alt='' />
     </Box>
   );
 };
