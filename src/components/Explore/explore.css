@@ -2,7 +2,7 @@
   position: relative;
   height: 80vh;
   min-height: 600px;
-  background: url("/explore/hero.jpg") center/cover no-repeat;
+  background: url("../../assets//banner_explore.png") center/cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -14,7 +14,7 @@
   position: absolute;
   inset: 0;
   background: linear-gradient(
-    180deg,
+    10deg,
     rgba(0, 0, 0, 0.35),
     rgba(0, 0, 0, 0.15),
     rgba(0, 0, 0, 0.4)

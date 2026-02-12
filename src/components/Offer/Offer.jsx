@@ -68,11 +68,11 @@ const Offer = () => {
           <PlayArrowIcon />
         </Box>
 
-        <Box className='banner-content'>
+        {/* <Box className='banner-content'>
           <span>Enjoy Summer Deals</span>
           <h3>Up to 40% Discount!</h3>
           <Button className='banner-btn'>SEE DETAILS →</Button>
-        </Box>
+        </Box> */}
       </Box>
     </section>
   );
