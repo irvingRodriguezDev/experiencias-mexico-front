@@ -15,7 +15,7 @@ const Home = () => {
       <Tours />
       <Offer />
       <Explore />
-      <Blog />
+      {/* <Blog /> */}
     </>
   );
 };

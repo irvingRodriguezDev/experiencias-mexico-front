@@ -17,7 +17,7 @@ const Explore = () => {
         <Button className='explore-btn'>BOOK YOUR TRIP NOW →</Button>
       </Box>
 
-      <span className='explore-watermark'>EXPLORE THE WORLD</span>
+      <span className='explore-watermark'>EXPLORA MÉXICO</span>
     </section>
   );
 };

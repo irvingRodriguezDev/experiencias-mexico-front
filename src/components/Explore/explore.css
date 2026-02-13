@@ -7,18 +7,13 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  background-color: transparent;
 }
 
 /* Dark / gradient overlay */
 .explore-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    10deg,
-    rgba(0, 0, 0, 0.35),
-    rgba(0, 0, 0, 0.15),
-    rgba(0, 0, 0, 0.4)
-  );
   z-index: 1;
 }
 
@@ -59,11 +54,22 @@
   bottom: 40px;
   width: 100%;
   text-align: center;
+
   font-size: 96px;
   font-weight: 800;
   letter-spacing: 6px;
+  text-transform: uppercase;
+
+  /* TEXTO TRANSPARENTE */
   color: transparent;
-  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.7);
+
+  /* CONTORNO BLANCO */
+  -webkit-text-stroke: 2px rgba(255, 255, 255, 0.9);
+
+  /* GLOW SUAVE (clave del efecto) */
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.35),
+    0 0 20px rgba(255, 255, 255, 0.25), 0 0 40px rgba(255, 255, 255, 0.15);
+
   z-index: 2;
   pointer-events: none;
 }

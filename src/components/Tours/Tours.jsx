@@ -13,7 +13,24 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import { useState } from "react";
 import TourIcon from "../icons/TourIcon";
-
+import FlightIcon from "@mui/icons-material/Flight";
+import HotelIcon from "@mui/icons-material/Hotel";
+import RestaurantIcon from "@mui/icons-material/Restaurant";
+import HomeIcon from "@mui/icons-material/Home";
+import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
+const tabStyles = {
+  textTransform: "none",
+  fontWeight: 500,
+  fontSize: "15px",
+  color: "#000",
+  minHeight: "64px",
+  "&.Mui-selected": {
+    color: "#000",
+  },
+  "& .MuiTab-iconWrapper": {
+    marginRight: "6px",
+  },
+};
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -147,18 +164,63 @@ const Tours = () => {
                 width: "75%",
               }}
             >
-              <AppBar position='static'>
+              <AppBar
+                position='static'
+                elevation={0}
+                sx={{
+                  bgcolor: "transparent",
+                  width: "80%",
+                  borderBottom: "1px solid #e0e0e0", // línea gris inferior
+                }}
+              >
                 <Tabs
                   value={value}
                   onChange={handleChange}
-                  indicatorColor='secondary'
-                  textColor='inherit'
                   variant='fullWidth'
-                  aria-label='full width tabs example'
+                  textColor='inherit'
+                  TabIndicatorProps={{
+                    sx: {
+                      backgroundColor: "#5b2dff", // morado
+                      height: "4px",
+                      borderRadius: "4px",
+                    },
+                  }}
+                  sx={{
+                    "& .MuiTabs-flexContainer": {
+                      gap: "8px",
+                    },
+                  }}
                 >
-                  <Tab label='Item One ' {...a11yProps(0)} />
-                  <Tab label='Item Two' {...a11yProps(1)} />
-                  <Tab label='Item Three' {...a11yProps(2)} />
+                  <Tab
+                    icon={<FlightIcon />}
+                    iconPosition='start'
+                    label='Tour'
+                    sx={tabStyles}
+                  />
+                  <Tab
+                    icon={<HotelIcon />}
+                    iconPosition='start'
+                    label='Hotel'
+                    sx={tabStyles}
+                  />
+                  <Tab
+                    icon={<RestaurantIcon />}
+                    iconPosition='start'
+                    label='Restaurant'
+                    sx={tabStyles}
+                  />
+                  <Tab
+                    icon={<HomeIcon />}
+                    iconPosition='start'
+                    label='Rental'
+                    sx={tabStyles}
+                  />
+                  <Tab
+                    icon={<DirectionsCarIcon />}
+                    iconPosition='start'
+                    label='Car Rental'
+                    sx={tabStyles}
+                  />
                 </Tabs>
               </AppBar>
               <TabPanel value={value} index={0} dir={theme.direction}>
