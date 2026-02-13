@@ -10,7 +10,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import MenuIcon from "@mui/icons-material/Menu";
 import "./header.css";
 import logo from "../../../assets/LOGO EXPERIENCIAS MEXICO VECTOR.png";
-import { Phone } from "@mui/icons-material";
+import Phoneicon from "../../icons/Phoneicon";
 
 const Header = () => {
   return (
@@ -34,7 +34,7 @@ const Header = () => {
 
         {/* Actions */}
         <Box className='actions'>
-          <Phone />
+          <Phoneicon width={30} color={"#FFF"} />
           <Typography className='phone'>+52 5652 6573 71</Typography>
 
           {/* <Button variant='outlined' className='login-btn'>

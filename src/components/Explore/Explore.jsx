@@ -7,14 +7,16 @@ const Explore = () => {
       <div className='explore-overlay' />
 
       <Box className='explore-content'>
-        <span className='explore-eyebrow'>Next Adventure Destination</span>
+        <span className='explore-eyebrow'>
+          El Destino de tu proxima Aventura
+        </span>
 
         <Typography className='explore-title'>
-          Popular Travel Destinations <br />
-          Available Worldwide
+          Destinos de viaje populares <br />
+          disponibles en México
         </Typography>
 
-        <Button className='explore-btn'>BOOK YOUR TRIP NOW →</Button>
+        <Button className='explore-btn'>Reserva ahora →</Button>
       </Box>
 
       <span className='explore-watermark'>EXPLORA MÉXICO</span>

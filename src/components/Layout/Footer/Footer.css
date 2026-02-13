@@ -1,7 +1,7 @@
 .footer {
-  background: radial-gradient(circle at top, #2b145f, #12002a);
+  background: transparent;
   padding: 80px 60px 20px;
-  color: white;
+  color: #000;
   position: relative;
   overflow: hidden;
 }
