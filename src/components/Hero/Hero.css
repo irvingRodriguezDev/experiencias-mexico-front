@@ -1,107 +1,74 @@
 .hero {
-  height: 80vh;
-  width: 100%;
   position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #ffb703;
 }
 
-.hero-swiper {
+.hero-swiper,
+.hero-swiper .swiper-wrapper,
+.hero-swiper .swiper-slide {
   height: 100%;
 }
 
 .hero-slide {
-  height: 100vh;
+  position: relative;
+  width: 100%;
+  height: 100%;
   background-size: cover;
   background-position: center;
-  position: relative;
 }
 
-/* Overlay EXACTO */
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.45),
-    rgba(0, 0, 0, 0.55)
-  );
+  background: rgba(0, 0, 0, 0.45);
   z-index: 1;
 }
 
-/* Contenido centrado */
 .hero-content {
-  position: absolute;
+  position: relative;
   z-index: 2;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  height: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
   text-align: center;
-  color: white;
-  max-width: 800px;
-  padding: 0 20px;
+  color: #fff;
+  padding: 0 16px;
 }
 
 .hero-title {
-  font-weight: bold !important;
-  font-size: 62px; /* Ajusta según prefieras, ya que en el sx tenías 42px */
-  line-height: 1.2;
-  margin-bottom: 16px;
-  color: #fff;
-}
-
-/* Si notas que el color o el margen de los textos no cambia, 
-   usa el prefijo .MuiTypography-root para ganar prioridad */
-.MuiTypography-root.hero-subtitle {
-  font-size: 14px;
-  letter-spacing: 1px;
-  margin-bottom: 12px;
-  opacity: 0.9;
-  color: #fff;
-}
-
-.MuiTypography-root.hero-description {
-  font-size: 15px;
-  opacity: 0.85;
-  margin-bottom: 24px;
-  color: #fff;
-}
-
-.hero-price {
-  font-size: 18px;
-  margin-bottom: 30px;
-}
-
-.hero-price span {
-  font-size: 32px;
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
   font-weight: 700;
 }
 
-/* Botón */
+.hero-subtitle {
+  letter-spacing: 2px;
+  opacity: 0.9;
+}
+
+.hero-description {
+  max-width: 600px;
+  margin: 16px 0;
+  opacity: 0.85;
+}
+
+.hero-price span {
+  font-weight: 700;
+  color: #ffb703;
+}
+
 .hero-btn {
-  background: #6c3cff !important;
-  color: white !important;
-  padding: 14px 36px !important;
-  border-radius: 30px !important;
-  font-weight: 600 !important;
-}
-
-/* Flechas EXACTAS */
-.swiper-button-prev,
-.swiper-button-next {
-  color: white;
-  background: rgba(255, 255, 255, 0.2);
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-}
-
-.swiper-button-prev::after,
-.swiper-button-next::after {
-  font-size: 18px;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .hero-title {
-    font-size: 42px;
-  }
+  margin-top: 24px;
+  padding: 12px 32px;
+  background: #ffb703;
+  color: #000;
+  font-weight: 600;
 }

@@ -4,11 +4,9 @@ import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "./hero.css";
+
 import Hero1 from "../../assets/hero-1.jpg";
-import Hero2 from "../../assets/hero-2.jpg";
-import Hero3 from "../../assets/hero-3.jpg";
-import Hero4 from "../../assets/hero-4.jpg";
-import Hero5 from "../../assets/hero-5.jpg";
+
 const slides = [
   {
     title: "Maldives island",
@@ -26,7 +24,7 @@ const Hero = () => {
       <Swiper
         modules={[Navigation, Autoplay]}
         navigation
-        autoplay={{ delay: 5000 }}
+        autoplay={{ delay: 5000, disableOnInteraction: false }}
         loop
         className='hero-swiper'
       >
@@ -34,7 +32,7 @@ const Hero = () => {
           <SwiperSlide key={index}>
             <Box
               className='hero-slide'
-              style={{
+              sx={{
                 backgroundImage: `url(${slide.image})`,
               }}
             >
