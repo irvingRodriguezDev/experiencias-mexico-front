@@ -42,11 +42,7 @@ function TabPanel(props) {
       aria-labelledby={`full-width-tab-${index}`}
       {...other}
     >
-      {value === index && (
-        <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
+      {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
     </div>
   );
 }
@@ -250,45 +246,6 @@ const Tours = () => {
         <img src={volcan} />
       </Grid>
     </Grid>
-    // <>
-    //   <img
-    //     src={piramides}
-    //     alt='piramides'
-    //     style={{ border: "3px solid green" }}
-    //   />
-    //   <Box className='tours'>
-    //     <Box
-    //       sx={{ position: "absolute", display: "flex", justifyContent: "end" }}
-    //     >
-    //       <img src={avion} alt='avion' />
-    //     </Box>
-
-    //     <Typography className='tours-subtitle'>
-    //       Most Popular Tour Packages
-    //     </Typography>
-
-    //     <Typography className='tours-title'>
-    //       Something Amazing Waiting For you
-    //     </Typography>
-
-    //     <Box className='tours-tabs'>
-    //       {categories.map((item, i) => (
-    //         <span key={i} className={`tours-tab ${i === 0 ? "active" : ""}`}>
-    //           {item}
-    //         </span>
-    //       ))}
-    //     </Box>
-
-    //     <Box className='tours-grid'>
-    //       {tours.map((tour) => (
-    //         <TourCard key={tour.id} tour={tour} />
-    //       ))}
-    //     </Box>
-    //     <Box>
-    //       <img src={volcan} />
-    //     </Box>
-    //   </Box>
-    // </>
   );
 };
 

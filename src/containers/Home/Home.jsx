@@ -5,10 +5,10 @@ import Hero from "../../components/Hero/Hero";
 import Offer from "../../components/Offer/Offer";
 import SearchBar from "../../components/searchBar/searchBar";
 import Tours from "../../components/Tours/Tours";
-
+import MainLayout from "../../components/Layout/Layout";
 const Home = () => {
   return (
-    <>
+    <MainLayout>
       <Hero />
       <SearchBar />
       <Discover />
@@ -16,7 +16,7 @@ const Home = () => {
       <Offer />
       <Explore />
       {/* <Blog /> */}
-    </>
+    </MainLayout>
   );
 };
 

@@ -134,7 +134,7 @@ const Footer = () => {
         }}
       >
         <Typography fontSize='18px' color='text.secondary'>
-          @IrvingDev | Todos los derechos reservados 2026
+          Todos los derechos reservados 2026
         </Typography>
       </Box>
     </Grid>

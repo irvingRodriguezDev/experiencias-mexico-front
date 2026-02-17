@@ -1,14 +1,11 @@
-import { useState } from "react";
-import MainLayout from "./components/Layout/Layout";
-import Home from "./containers/Home/Home";
-
+import "./App.css";
+import AppRouter from "./routes/AppRouter";
+import ToursState from "./context/Tours/ToursState";
 function App() {
   return (
-    <>
-      <MainLayout>
-        <Home />
-      </MainLayout>
-    </>
+    <ToursState>
+      <AppRouter />
+    </ToursState>
   );
 }
 

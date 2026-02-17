@@ -9,11 +9,15 @@ const TourCard = ({ tour }) => {
     <Card className='tour-card'>
       {/* IMAGE */}
       <div className='tour-image'>
-        <img src={tour.image} alt={tour.title} />
+        <img src={tour.cover_image} alt={tour.title} loading='lazy' />
 
         {tour.badge && <span className='tour-badge'>{tour.badge}</span>}
 
-        <button className='tour-favorite'>
+        <button
+          className='tour-favorite'
+          type='button'
+          aria-label='Agregar a favoritos'
+        >
           <FavoriteBorder fontSize='small' />
         </button>
       </div>
@@ -28,23 +32,24 @@ const TourCard = ({ tour }) => {
           </span>
 
           <span className='tour-days'>
-            <TimeIcon width={16} /> {tour.days}
+            <TimeIcon width={16} /> {tour.duration}
           </span>
         </div>
 
         {/* FOOTER */}
         <div className='tour-footer'>
           <div className='tour-price'>
-            {tour.oldPrice && (
-              <span className='price old'>${tour.oldPrice}</span>
+            {tour.old_price && (
+              <span className='price old'>${tour.old_price}</span>
             )}
+
             <span className='price'>${tour.price}</span>
-            <span className='per'>/Person</span>
+            <span className='per'>/Persona</span>
           </div>
 
           <div className='tour-rating'>
             <Star fontSize='small' />
-            <span>({tour.reviews} Reviews)</span>
+            <span>({tour.reviews_count ?? 0} Reviews)</span>
           </div>
         </div>
       </div>
