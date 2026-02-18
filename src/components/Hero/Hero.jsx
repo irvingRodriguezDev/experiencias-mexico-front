@@ -4,8 +4,10 @@ import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "./hero.css";
-
+import ToursContext from "../../context/Tours/ToursContext";
 import Hero1 from "../../assets/hero-1.jpg";
+import { useContext, useEffect } from "react";
+import HeroTours from "./HeroTours";
 
 const slides = [
   {
@@ -19,48 +21,15 @@ const slides = [
 ];
 
 const Hero = () => {
+  const { getLatestTours, tours } = useContext(ToursContext);
+
+  useEffect(() => {
+    getLatestTours();
+  }, []);
+
   return (
     <Box className='hero'>
-      <Swiper
-        modules={[Navigation, Autoplay]}
-        navigation
-        autoplay={{ delay: 5000, disableOnInteraction: false }}
-        loop
-        className='hero-swiper'
-      >
-        {slides.map((slide, index) => (
-          <SwiperSlide key={index}>
-            <Box
-              className='hero-slide'
-              sx={{
-                backgroundImage: `url(${slide.image})`,
-              }}
-            >
-              {/* Overlay */}
-              <Box className='hero-overlay' />
-
-              {/* Content */}
-              <Box className='hero-content'>
-                <Typography className='hero-subtitle'>
-                  {slide.subtitle}
-                </Typography>
-
-                <Typography className='hero-title'>{slide.title}</Typography>
-
-                <Typography className='hero-description'>
-                  {slide.description}
-                </Typography>
-
-                <Typography className='hero-price'>
-                  Booking Start From <span>{slide.price}</span>/night
-                </Typography>
-
-                <Button className='hero-btn'>TAKE A TOUR →</Button>
-              </Box>
-            </Box>
-          </SwiperSlide>
-        ))}
-      </Swiper>
+      <HeroTours tours={tours} />
     </Box>
   );
 };

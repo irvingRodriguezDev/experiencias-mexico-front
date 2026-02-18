@@ -3,7 +3,7 @@ import MethodGet, { MethodDelete, MethodPost } from "../../config/Service";
 import Swal from "sweetalert2";
 import ToursReducer from "./ToursReducer";
 import ToursContext from "./ToursContext";
-import { GET_ALL_TOURS, GET_CURRENT_TOUR } from "../../types";
+import { GET_ALL_TOURS, GET_CURRENT_TOUR, LATEST_TOURS } from "../../types";
 const ToursState = ({ children }) => {
   const initialState = {
     tours: [],
@@ -39,12 +39,27 @@ const ToursState = ({ children }) => {
       });
   };
 
+  const getLatestTours = () => {
+    let url = "/tours/latest";
+    MethodGet(url)
+      .then((res) => {
+        dispatch({
+          type: LATEST_TOURS,
+          payload: res.data.tours,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <ToursContext.Provider
       value={{
         tours: state.tours,
         getAllTours,
         getCurrentTour,
+        getLatestTours,
       }}
     >
       {children}

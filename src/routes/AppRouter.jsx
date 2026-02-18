@@ -3,6 +3,7 @@ import { PublicRoute } from "./PublicRoute";
 import { Box, Grid } from "@mui/material";
 
 import Home from "../containers/Home/Home";
+import TourDetail from "../components/Tours/TourDetail";
 function AppRouter({}) {
   //   if (cargando) {
   //     return (
@@ -26,6 +27,7 @@ function AppRouter({}) {
       {/* Rutas públicas */}
       <Route element={<PublicRoute isAuthenticated={false} />}>
         <Route path='/' element={<Home />} />
+        <Route path='/tour/:slug' element={<TourDetail />} />
       </Route>
 
       {/* Ruta por defecto */}

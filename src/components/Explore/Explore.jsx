@@ -4,11 +4,13 @@ import "./explore.css";
 const Explore = () => {
   return (
     <section className='explore'>
+      {/* Overlay con gradiente premium */}
       <div className='explore-overlay' />
 
+      {/* Contenido principal */}
       <Box className='explore-content'>
         <span className='explore-eyebrow'>
-          El Destino de tu proxima Aventura
+          Donde comienza tu próxima aventura
         </span>
 
         <Typography className='explore-title'>
@@ -16,9 +18,20 @@ const Explore = () => {
           disponibles en México
         </Typography>
 
-        <Button className='explore-btn'>Reserva ahora →</Button>
+        <Button
+          size='large'
+          sx={{
+            bgcolor: "#01528C",
+            color: "#A3BB13",
+            borderRadius: "12px",
+            fontWeight: "bold",
+          }}
+        >
+          Reserva ahora →
+        </Button>
       </Box>
 
+      {/* Watermark */}
       <span className='explore-watermark'>DESCUBRE MÉXICO</span>
     </section>
   );

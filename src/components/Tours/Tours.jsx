@@ -11,13 +11,15 @@ import { useTheme } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import TourIcon from "../icons/TourIcon";
 import FlightIcon from "@mui/icons-material/Flight";
 import HotelIcon from "@mui/icons-material/Hotel";
 import RestaurantIcon from "@mui/icons-material/Restaurant";
 import HomeIcon from "@mui/icons-material/Home";
 import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
+import ToursContext from "../../context/Tours/ToursContext";
+import SearchBar from "../searchBar/searchBar";
 const tabStyles = {
   textTransform: "none",
   fontWeight: 500,
@@ -121,9 +123,15 @@ const Tours = () => {
   const theme = useTheme();
   const [value, setValue] = useState(0);
 
+  const { tours, getAllTours } = useContext(ToursContext);
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
+  useEffect(() => {
+    getAllTours();
+  }, []);
+
   return (
     <Grid container spacing={2} sx={{ backgroundColor: "#f8f8f8" }}>
       <Grid size={12} sx={{ display: "flex", justifyContent: "flex-end" }}>
@@ -132,6 +140,7 @@ const Tours = () => {
       <Grid size={12} sx={{ display: "flex", justifyContent: "flex-end" }}>
         <img src={piramides} />
       </Grid>
+
       <Grid size={12} sx={{ mt: -30 }}>
         <Grid container spacing={2}>
           <Grid size={12}>
@@ -140,7 +149,7 @@ const Tours = () => {
               textAlign='center'
               fontFamily='monospace'
             >
-              Most Popular Tour Packages
+              Nuestros Paquetes Más Populares
             </Typography>
           </Grid>
           <Grid size={12}>
@@ -150,9 +159,12 @@ const Tours = () => {
               textAlign='center'
               fontSize='40px'
             >
-              Something Amazing Waiting For you
+              Algo Increible Te Espera
             </Typography>
           </Grid>
+          {/* <Grid size={12}>
+            <SearchBar />
+          </Grid> */}
           <Grid size={12} sx={{ display: "flex", justifyContent: "center" }}>
             <Box
               sx={{

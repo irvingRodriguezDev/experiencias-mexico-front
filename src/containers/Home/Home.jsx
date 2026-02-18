@@ -10,7 +10,6 @@ const Home = () => {
   return (
     <MainLayout>
       <Hero />
-      <SearchBar />
       <Discover />
       <Tours />
       <Offer />

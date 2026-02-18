@@ -1,207 +1,134 @@
-import { Box, Typography, Button, Grid } from "@mui/material";
-import PlayArrowIcon from "@mui/icons-material/PlayArrow";
+import { Box, Typography, Button } from "@mui/material";
+import { motion } from "framer-motion";
 import "./offer.css";
+
 import lanchas from "../../assets/lanchas.webp";
 import pareja from "../../assets/pareja.webp";
-import WorldIcon from "../icons/WorldIcon";
-import PackageIcon from "../icons/PackageIcon";
 import china from "../../assets/nuevo-europa.webp";
 import rosa from "../../assets/rosa.webp";
-import europa from "../../assets/europa.webp";
+
+import WorldIcon from "../icons/WorldIcon";
+import PackageIcon from "../icons/PackageIcon";
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0 },
+};
+
 const Offer = () => {
   return (
-    <Box
-      sx={{
-        width: "100%",
-        minHeight: "100vh",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        px: 10,
-        bgcolor: "#F7F6F6",
-      }}
-    >
-      <img
+    <Box className='offer'>
+      {/* Imagen decorativa */}
+      <motion.img
         src={china}
-        style={{
-          marginLeft: -270,
-          zIndex: 0,
-          position: "relative",
-        }}
+        className='offer-bg'
+        alt=''
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+        viewport={{ once: true }}
       />
-      {/* CONTENEDOR PRINCIPAL */}
-      <Box
-        sx={{
-          width: "100%",
-          maxWidth: "1400px",
-          display: "flex",
-          gap: 8,
-          zIndex: 5,
-        }}
-      >
-        {/* ===== LEFT CONTENT ===== */}
-        <Box sx={{ flex: 1 }}>
-          <Typography
-            sx={{
-              color: "#6C3BFF",
-              fontSize: "16px",
-              fontStyle: "italic",
-              mb: 1,
-            }}
-          >
-            Dream Your Next Trip
-          </Typography>
 
-          <Typography
-            sx={{
-              fontSize: "48px",
-              fontWeight: 700,
-              lineHeight: "56px",
-              mb: 2,
-              color: "#000",
-            }}
-          >
-            Discover When Ever <br />
-            You Want To Go
-          </Typography>
+      <Box className='offer-container'>
+        {/* ===== TEXTO ===== */}
+        <Box
+          className='offer-left'
+          component={motion.div}
+          initial='hidden'
+          whileInView='visible'
+          viewport={{ once: true }}
+        >
+          <motion.div variants={fadeUp}>
+            <Typography className='offer-subtitle'>
+              Planea tu próxima aventura
+            </Typography>
+          </motion.div>
 
-          <Typography
-            sx={{
-              color: "#555",
-              fontSize: "16px",
-              maxWidth: "500px",
-              mb: 4,
-            }}
-          >
-            Are You Tired Of The Typical Tourist Destinations And Looking To
-            Step Out Of Your Comfort Zone? Adventure Travel May Be The Perfect
-            Solution For You! Here Are Four.
-          </Typography>
+          <motion.div variants={fadeUp}>
+            <Typography className='offer-title'>
+              Viaja cuando quieras, <br />
+              como siempre soñaste
+            </Typography>
+          </motion.div>
 
-          {/* FEATURE 1 */}
-          <Box sx={{ display: "flex", gap: 2, mb: 3 }}>
-            <Box
-              sx={{
-                width: 48,
-                height: 48,
-                borderRadius: "50%",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              <WorldIcon />
-            </Box>
+          <motion.div variants={fadeUp}>
+            <Typography className='offer-text'>
+              Sal de lo convencional y descubre experiencias auténticas.
+              Diseñamos viajes únicos para quienes buscan algo más que un
+              destino: buscan recuerdos inolvidables.
+            </Typography>
+          </motion.div>
 
+          {/* FEATURES */}
+          <motion.div variants={fadeUp} className='offer-feature'>
+            <WorldIcon />
             <Box>
-              <Typography fontWeight={600}>Best Travel Agency</Typography>
-              <Typography fontSize='14px' color='#555'>
-                Are you tired of the typical tourist destination and looking
-                step out of your comfort.
+              <Typography fontWeight={600} color='#01528C'>
+                Agencia experta en experiencias
+              </Typography>
+              <Typography className='feature-text'>
+                Creamos viajes personalizados en los destinos más increíbles.
               </Typography>
             </Box>
-          </Box>
+          </motion.div>
 
-          {/* FEATURE 2 */}
-          <Box sx={{ display: "flex", gap: 2, mb: 5 }}>
-            <Box
-              sx={{
-                width: 48,
-                height: 48,
-                borderRadius: "50%",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              <PackageIcon />
-            </Box>
-
+          <motion.div variants={fadeUp} className='offer-feature'>
+            <PackageIcon />
             <Box>
-              <Typography fontWeight={600}>Secure Journey With Us</Typography>
-              <Typography fontSize='14px' color='#555'>
-                Are you tired of the typical tourist destination and looking
-                step out of your comfort.
+              <Typography fontWeight={600} color='#A3BB13'>
+                Viajes seguros y confiables
+              </Typography>
+              <Typography className='feature-text'>
+                Te acompañamos en cada paso para que solo te preocupes por
+                disfrutar.
               </Typography>
             </Box>
-          </Box>
+          </motion.div>
 
-          <Button
-            variant='contained'
-            sx={{
-              bgcolor: "#6C3BFF",
-              px: 4,
-              py: 1.5,
-              borderRadius: "8px",
-              textTransform: "none",
-              fontWeight: 600,
-              "&:hover": {
-                bgcolor: "#5A2DE0",
-              },
-            }}
-          >
-            Book Your Trip →
-          </Button>
+          <motion.div variants={fadeUp}>
+            <Button
+              size='large'
+              sx={{
+                bgcolor: "#A3BB13",
+                borderRadius: "12px",
+                fontWeight: "bold",
+                color: "#01528C",
+              }}
+            >
+              Descubrir experiencias →
+            </Button>
+          </motion.div>
         </Box>
 
-        {/* ===== RIGHT IMAGES ===== */}
-        <Box
-          sx={{
-            flex: 1,
-            position: "relative",
-            display: "flex",
-            justifyContent: "flex-end",
-          }}
-        >
-          {/* TEXTO VERTICAL */}
-          <Typography
-            sx={{
-              position: "absolute",
-              right: "-60px",
-              top: "40%",
-              transform: "rotate(90deg) translateY(-50%)",
-              fontSize: "140px",
-              fontWeight: 700,
-              color: "transparent",
-              WebkitTextStroke: "1px #999",
-              letterSpacing: "8px",
-            }}
-          >
-            TRAVEL
-          </Typography>
+        {/* ===== IMÁGENES ===== */}
+        <Box className='offer-right'>
+          <Typography className='offer-watermark'>VIAJAR</Typography>
 
-          {/* IMAGEN GRANDE */}
-          <Box
-            component='img'
-            src={lanchas}
-            sx={{
-              width: "490px",
-              height: "590px",
-              objectFit: "cover",
-              borderRadius: "24px",
-              marginRight: 25,
-            }}
+          <motion.img
+            src={
+              "https://grupoenconcreto.com/wp-content/uploads/2025/03/El-Pueblo-MagicoMascota-celebrara-en-grande-su-140-aniversario-scaled.jpg"
+            }
+            className='offer-main-img'
+            alt=''
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
           />
 
-          {/* IMAGEN FLOTANTE */}
-          <Box
-            component='img'
-            src={pareja}
-            sx={{
-              position: "absolute",
-              bottom: "170px",
-              left: "-70px",
-              width: "300px",
-              height: "250px",
-              objectFit: "cover",
-              borderRadius: "20px",
-              boxShadow: "0 20px 40px rgba(0,0,0,0.15)",
-            }}
+          <motion.img
+            src={
+              "https://travelgrafia.co/wp-content/uploads/2025/01/Pueblo-Magico-de-Queretaro.jpg"
+            }
+            className='offer-float-img'
+            alt=''
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
           />
-          <img
-            src={rosa}
-            style={{ position: "absolute", marginRight: "105%" }}
-          />
+
+          <img src={rosa} className='offer-deco' alt='' />
         </Box>
       </Box>
     </Box>

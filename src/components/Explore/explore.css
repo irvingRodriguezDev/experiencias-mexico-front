@@ -1,23 +1,23 @@
+/* CONTENEDOR PRINCIPAL */
 .explore {
   position: relative;
   height: 80vh;
   min-height: 600px;
-  background: url("../../assets//banner_explore.png") center/cover no-repeat;
+  background: url("../../assets/banner_explore.png") center / cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background-color: transparent;
 }
 
-/* Dark / gradient overlay */
+/* OVERLAY PREMIUM */
 .explore-overlay {
   position: absolute;
   inset: 0;
   z-index: 1;
 }
 
-/* CONTENT */
+/* CONTENIDO */
 .explore-content {
   position: relative;
   z-index: 2;
@@ -25,14 +25,31 @@
   color: white;
   max-width: 800px;
   padding: 0 20px;
+
+  /* Animación suave */
+  animation: fadeUp 1s ease-out forwards;
 }
 
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* EYEBROW */
 .explore-eyebrow {
   font-style: italic;
   opacity: 0.9;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.6px;
+  font-size: 15px;
 }
 
+/* TITULO */
 .explore-title {
   font-size: 44px;
   font-weight: 800;
@@ -40,15 +57,23 @@
   line-height: 1.2;
 }
 
+/* BOTÓN */
 .explore-btn {
   background: #ffffff !important;
   color: #5a2dfc !important;
-  padding: 14px 28px !important;
-  border-radius: 12px !important;
+  padding: 14px 32px !important;
+  border-radius: 14px !important;
   font-weight: 600 !important;
+  text-transform: none !important;
+  transition: all 0.3s ease !important;
 }
 
-/* WATERMARK TEXT */
+.explore-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+}
+
+/* WATERMARK */
 .explore-watermark {
   position: absolute;
   bottom: 40px;
@@ -60,15 +85,14 @@
   letter-spacing: 6px;
   text-transform: uppercase;
 
-  /* TEXTO TRANSPARENTE */
   color: transparent;
-
-  /* CONTORNO BLANCO */
   -webkit-text-stroke: 2px rgba(255, 255, 255, 0.9);
 
-  /* GLOW SUAVE (clave del efecto) */
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.35),
     0 0 20px rgba(255, 255, 255, 0.25), 0 0 40px rgba(255, 255, 255, 0.15);
+
+  opacity: 0.85;
+  mix-blend-mode: overlay;
 
   z-index: 2;
   pointer-events: none;
@@ -76,8 +100,18 @@
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
+  .explore {
+    height: 70vh;
+    min-height: 500px;
+  }
+
+  .explore-eyebrow {
+    font-size: 14px;
+  }
+
   .explore-title {
-    font-size: 30px;
+    font-size: 28px;
+    line-height: 1.25;
   }
 
   .explore-watermark {

@@ -17,7 +17,7 @@
 
 .tour-image {
   position: relative;
-  height: 220px;
+  height: auto;
 }
 
 .tour-image img {

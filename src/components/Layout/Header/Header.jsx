@@ -19,7 +19,7 @@ const Header = () => {
         {/* Logo */}
         <Box className='logo'>
           <Typography variant='h6'>
-            <img src={logo} width={120} />
+            <img src={logo} width={100} height={80} />
           </Typography>
         </Box>
 
