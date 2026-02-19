@@ -172,7 +172,7 @@ const Tours = () => {
                 width: "75%",
               }}
             >
-              <AppBar
+              {/* <AppBar
                 position='static'
                 elevation={0}
                 sx={{
@@ -230,7 +230,7 @@ const Tours = () => {
                     sx={tabStyles}
                   />
                 </Tabs>
-              </AppBar>
+              </AppBar> */}
               <TabPanel value={value} index={0} dir={theme.direction}>
                 <Grid container spacing={2}>
                   {tours.map((tour, index) => (

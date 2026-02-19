@@ -102,7 +102,16 @@ const Offer = () => {
 
         {/* ===== IMÁGENES ===== */}
         <Box className='offer-right'>
-          <Typography className='offer-watermark'>VIAJAR</Typography>
+          <Typography
+            component={motion.div}
+            className='offer-watermark'
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+            viewport={{ once: true }}
+          >
+            VIAJAR
+          </Typography>
 
           <motion.img
             src={

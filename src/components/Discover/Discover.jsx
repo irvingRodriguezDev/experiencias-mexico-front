@@ -67,7 +67,9 @@ const Discover = () => {
         </motion.div>
 
         <motion.div variants={fadeUp}>
-          <Typography color='#01528C'>Experiencias Destacadas</Typography>
+          <Typography color='#01528C' fontWeight='bold' fontSize='30px'>
+            Experiencias Destacadas
+          </Typography>
         </motion.div>
 
         <motion.div variants={fadeUp}>
@@ -86,7 +88,10 @@ const Discover = () => {
 
         <motion.div variants={fadeUp}>
           <Button
-            className='discover-btn'
+            variant='contained'
+            color='primary'
+            size='large'
+            sx={{ borderRadius: "12px", fontWeight: "bold", color: "#A3BB13" }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >

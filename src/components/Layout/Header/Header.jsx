@@ -34,8 +34,28 @@ const Header = () => {
 
         {/* Actions */}
         <Box className='actions'>
-          <Phoneicon width={30} color={"#FFF"} />
-          <Typography className='phone'>+52 5652 6573 71</Typography>
+          <Button
+            component='a'
+            href='tel:+525652657371'
+            startIcon={<Phoneicon width={22} color='#FFF' />}
+            sx={{
+              color: "#FFF",
+              textTransform: "none",
+              fontWeight: 700,
+              fontSize: "20px",
+              p: 0,
+              minWidth: "auto",
+              backgroundColor: "transparent",
+              boxShadow: "none",
+              "&:hover": {
+                backgroundColor: "rgba(163, 187, 19,0.08)",
+                textDecoration: "none",
+                boxShadow: "none",
+              },
+            }}
+          >
+            +52 5652 6573 71
+          </Button>
 
           {/* <Button variant='outlined' className='login-btn'>
             Login
