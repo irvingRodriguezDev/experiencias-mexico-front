@@ -1,10 +1,12 @@
-import { Box, Typography, Button } from "@mui/material";
+import { Box, Typography, Button, Chip } from "@mui/material";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectFade } from "swiper/modules";
 
 import "swiper/css";
 import "swiper/css/effect-fade";
 import WhatsAppIcon from "../icons/WhatsAppIcon";
+import CalendarIcon from "../icons/CalendarIcon";
+import FormatDate from "../../utils/FormatDate";
 
 const HeroTours = ({ tours = [] }) => {
   if (!tours.length) return null;
@@ -97,7 +99,11 @@ const HeroTours = ({ tours = [] }) => {
                 >
                   {tour.title}
                 </Typography>
-
+                <Chip
+                  icon={<CalendarIcon width={30} />}
+                  label={FormatDate(tour.date)}
+                  sx={{ bgcolor: "rgba(255,255,255,.85)", mb: 2 }}
+                />
                 {/* DIVIDER */}
                 <Box
                   sx={{
