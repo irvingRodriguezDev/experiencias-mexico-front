@@ -12,11 +12,12 @@ import {
   IconButton,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
-import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import StarIcon from "@mui/icons-material/Star";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-
+import WhatsAppIcon from "../icons/WhatsAppIcon";
+import CalendarIcon from "../icons/CalendarIcon";
+import FormatDate from "../../utils/FormatDate";
 export default function TourDetailModal({ open, onClose, tour, loading }) {
   if (loading) {
     return (
@@ -47,7 +48,7 @@ export default function TourDetailModal({ open, onClose, tour, loading }) {
       scroll='paper'
       PaperProps={{
         sx: {
-          borderRadius: 4,
+          borderRadius: { xs: 4, md: 4 },
           overflow: "hidden",
         },
       }}
@@ -60,7 +61,7 @@ export default function TourDetailModal({ open, onClose, tour, loading }) {
             src={cover}
             sx={{
               width: "100%",
-              height: { xs: 260, md: 380 },
+              height: { xs: 240, sm: 300, md: 380 },
               objectFit: "cover",
             }}
           />
@@ -91,13 +92,23 @@ export default function TourDetailModal({ open, onClose, tour, loading }) {
           <Box
             sx={{
               position: "absolute",
-              bottom: 32,
-              left: 32,
-              right: 32,
+              bottom: { xs: 16, md: 32 },
+              left: { xs: 16, md: 32 },
+              right: { xs: 16, md: 32 },
               color: "#fff",
             }}
           >
-            <Typography variant='h4' fontWeight={900}>
+            <Typography
+              sx={{
+                fontWeight: 900,
+                fontSize: {
+                  xs: "1.6rem",
+                  sm: "2rem",
+                  md: "2.4rem",
+                },
+                lineHeight: 1.2,
+              }}
+            >
               {tour.title}
             </Typography>
 
@@ -107,47 +118,78 @@ export default function TourDetailModal({ open, onClose, tour, loading }) {
                 label={tour.duration}
                 sx={{ bgcolor: "rgba(255,255,255,.85)" }}
               />
+              <Chip
+                icon={<CalendarIcon width={30} />}
+                label={FormatDate(tour.date)}
+                sx={{ bgcolor: "rgba(255,255,255,.85)" }}
+              />
             </Stack>
           </Box>
         </Box>
       )}
 
       {/* ===== CONTENT ===== */}
-      <DialogContent sx={{ p: { xs: 3, md: 5 } }}>
-        <Grid container spacing={6}>
+      <DialogContent sx={{ p: { xs: 2.5, md: 5 } }}>
+        <Grid container spacing={{ xs: 4, md: 6 }}>
           {/* ===== MAIN ===== */}
           <Grid size={{ xs: 12, md: 8 }}>
             {/* Short description */}
             <Typography
-              fontSize='1.1rem'
-              lineHeight={1.9}
+              sx={{
+                fontSize: {
+                  xs: "0.95rem",
+                  sm: "1rem",
+                  md: "1.1rem",
+                },
+                lineHeight: 1.8,
+              }}
               color='text.secondary'
-              mb={4}
+              mb={{ xs: 3, md: 4 }}
             >
               {tour.short_description}
             </Typography>
-            {/* Description (HTML) */}
-            <Typography variant='h5' fontWeight={800} mb={2} color='#01528C'>
+
+            {/* Description */}
+            <Typography
+              sx={{
+                fontWeight: 800,
+                color: "#01528C",
+                fontSize: {
+                  xs: "1.2rem",
+                  md: "1.5rem",
+                },
+              }}
+              mb={2}
+            >
               Sobre esta experiencia
             </Typography>
 
             <Box
               sx={{
                 color: "text.secondary",
-                lineHeight: 1.9,
+                lineHeight: 1.8,
                 mb: 6,
-                width: "100%",
+                fontSize: {
+                  xs: "0.95rem",
+                  md: "1rem",
+                },
+                "& h1": { fontSize: "1.4rem" },
+                "& h2": { fontSize: "1.2rem" },
+                "& h3": { fontSize: "1.1rem" },
+                "& p": { marginBottom: "1rem" },
               }}
               dangerouslySetInnerHTML={{ __html: tour.description }}
             />
-            {/* Location (HTML) */}
+
             {tour.location && (
-              <Stack direction='row' spacing={2} mb={4} alignItems='flex-start'>
-                <Box
-                  sx={{ lineHeight: 1.7 }}
-                  dangerouslySetInnerHTML={{ __html: tour.location }}
-                />
-              </Stack>
+              <Box
+                sx={{
+                  fontSize: { xs: "0.95rem", md: "1rem" },
+                  lineHeight: 1.8,
+                  mb: 4,
+                }}
+                dangerouslySetInnerHTML={{ __html: tour.location }}
+              />
             )}
 
             <Divider sx={{ mb: 4 }} />
@@ -156,10 +198,15 @@ export default function TourDetailModal({ open, onClose, tour, loading }) {
             {tour.tags?.length > 0 && (
               <>
                 <Typography
-                  variant='h5'
-                  fontWeight={800}
+                  sx={{
+                    fontWeight: 800,
+                    color: "#01528C",
+                    fontSize: {
+                      xs: "1.2rem",
+                      md: "1.5rem",
+                    },
+                  }}
                   mb={3}
-                  color='#01528C'
                 >
                   Tags
                 </Typography>
@@ -182,12 +229,13 @@ export default function TourDetailModal({ open, onClose, tour, loading }) {
           <Grid size={{ xs: 12, md: 4 }}>
             <Box
               sx={{
-                position: "sticky",
-                top: 120,
-                p: 4,
+                position: { xs: "relative", md: "sticky" },
+                top: { md: 120 },
+                p: { xs: 3, md: 4 },
                 borderRadius: 4,
                 bgcolor: "#fff",
                 boxShadow: "0 20px 40px rgba(0,0,0,0.15)",
+                mt: { xs: 2, md: 0 },
               }}
             >
               <Typography
@@ -199,7 +247,18 @@ export default function TourDetailModal({ open, onClose, tour, loading }) {
                 Precio por persona
               </Typography>
 
-              <Typography variant='h3' fontWeight={900} color='#01528C' mb={2}>
+              <Typography
+                sx={{
+                  fontWeight: 900,
+                  color: "#01528C",
+                  fontSize: {
+                    xs: "1.8rem",
+                    sm: "2.2rem",
+                    md: "2.6rem",
+                  },
+                }}
+                mb={2}
+              >
                 ${tour.price} MXN
               </Typography>
 
@@ -207,12 +266,15 @@ export default function TourDetailModal({ open, onClose, tour, loading }) {
                 fullWidth
                 size='large'
                 variant='contained'
-                startIcon={<WhatsAppIcon />}
+                startIcon={<WhatsAppIcon width={28} />}
                 href={tour.whatsapp_link}
                 target='_blank'
                 sx={{
-                  py: 2,
-                  fontSize: "17px",
+                  py: { xs: 1.5, md: 2 },
+                  fontSize: {
+                    xs: "0.95rem",
+                    md: "1rem",
+                  },
                   fontWeight: 800,
                   bgcolor: "#A3BB13",
                   color: "#01528C",

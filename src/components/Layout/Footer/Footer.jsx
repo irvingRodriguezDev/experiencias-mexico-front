@@ -89,10 +89,10 @@ const Footer = () => {
                 gap: 1,
                 color: "#000",
                 fontWeight: 600,
-                fontSize: { xs: 0, sm: "18px" },
+                fontSize: { xs: "18px", sm: "18px" },
                 lineHeight: 1,
                 textTransform: "none",
-                minWidth: { xs: 42, sm: "auto" },
+                minWidth: { xs: "auto", sm: "auto" },
                 height: 42,
                 px: { xs: 0, sm: 2 },
                 borderRadius: 999,
@@ -108,7 +108,7 @@ const Footer = () => {
             >
               <Box
                 component='span'
-                sx={{ display: { xs: "none", sm: "inline" } }}
+                sx={{ display: { xs: "inline", sm: "inline" } }}
               >
                 +52 5652 6573 71
               </Box>

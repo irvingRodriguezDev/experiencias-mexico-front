@@ -4,6 +4,7 @@ import { Autoplay, EffectFade } from "swiper/modules";
 
 import "swiper/css";
 import "swiper/css/effect-fade";
+import WhatsAppIcon from "../icons/WhatsAppIcon";
 
 const HeroTours = ({ tours = [] }) => {
   if (!tours.length) return null;
@@ -143,6 +144,7 @@ const HeroTours = ({ tours = [] }) => {
                   href={tour.whatsapp_link}
                   target='_blank'
                   size='large'
+                  startIcon={<WhatsAppIcon width={28} />}
                   sx={{
                     bgcolor: "#a3bb13",
                     color: "#fff",
@@ -158,7 +160,7 @@ const HeroTours = ({ tours = [] }) => {
                     },
                   }}
                 >
-                  Me interesa →
+                  Reservar Ahora en WhatsApp
                 </Button>
               </Box>
             </Box>
