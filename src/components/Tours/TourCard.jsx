@@ -16,15 +16,13 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 import ScheduleIcon from "@mui/icons-material/Schedule";
 import { Link } from "react-router-dom";
 
-const TourCard = ({ tour }) => {
+const TourCard = ({ tour, onOpen }) => {
   return (
     <Paper elevation={3} sx={{ borderRadius: "12px" }}>
       <Card
-        component={Link}
-        to={`/tour/${tour.slug}`}
+        onClick={onOpen}
         sx={{
-          textDecoration: "none",
-          color: "inherit",
+          cursor: "pointer",
           borderRadius: 4,
           overflow: "hidden",
           transition: "all .35s ease",
@@ -44,18 +42,7 @@ const TourCard = ({ tour }) => {
             sx={{
               height: "auto",
               width: "100%",
-              borderRadius: "12px",
-              objectFit: "cover", // 👈 CLAVE
-            }}
-          />
-
-          {/* Gradient overlay */}
-          <Box
-            sx={{
-              position: "absolute",
-              inset: 0,
-              background:
-                "linear-gradient(to bottom, rgba(0,0,0,.05), rgba(0,0,0,.05))",
+              objectFit: "cover",
             }}
           />
 
@@ -81,7 +68,7 @@ const TourCard = ({ tour }) => {
               <IconButton
                 href={tour.whatsapp_link}
                 target='_blank'
-                onClick={(e) => e.stopPropagation()}
+                onClick={(e) => e.stopPropagation()} // 🔥 CLAVE
                 sx={{
                   position: "absolute",
                   bottom: 12,
@@ -89,9 +76,7 @@ const TourCard = ({ tour }) => {
                   bgcolor: "#25D366",
                   color: "#fff",
                   boxShadow: 4,
-                  "&:hover": {
-                    bgcolor: "#1ebe5d",
-                  },
+                  "&:hover": { bgcolor: "#1ebe5d" },
                 }}
               >
                 <WhatsAppIcon fontSize='small' />
@@ -120,7 +105,7 @@ const TourCard = ({ tour }) => {
           <Stack spacing={0.8} sx={{ color: "text.secondary", mb: 2 }}>
             <Stack direction='row' spacing={1} alignItems='center'>
               <LocationOnIcon fontSize='small' />
-              <Typography variant='body2'>{tour.location}</Typography>
+              <Typography variant='body2'>{tour.short_description}</Typography>
             </Stack>
 
             <Stack direction='row' spacing={1} alignItems='center'>
@@ -133,34 +118,18 @@ const TourCard = ({ tour }) => {
           <Box
             sx={{
               mt: "auto",
-              display: "inline-flex",
-              flexDirection: "column",
               py: 1,
               bgcolor: "#01528C",
               color: "#fff",
-              width: "100%  ",
+              width: "100%",
               borderTopRightRadius: "18px",
               borderBottomLeftRadius: "18px",
-              borderTopLeftRadius: "3px  ",
-              borderBottomRightRadius: "3px",
             }}
           >
-            {tour.old_price && (
-              <Typography
-                variant='caption'
-                sx={{ textDecoration: "line-through", opacity: 0.8 }}
-              >
-                ${tour.old_price}
-              </Typography>
-            )}
-
-            <Typography variant='h6' fontWeight={800} lineHeight={1}>
-              ${tour.price}
+            <Typography variant='h6' fontWeight={800}>
+              ${tour.price} MXN
             </Typography>
-
-            <Typography variant='caption' sx={{ opacity: 0.9 }}>
-              MXN / persona
-            </Typography>
+            <Typography variant='caption'>por persona</Typography>
           </Box>
         </CardContent>
       </Card>

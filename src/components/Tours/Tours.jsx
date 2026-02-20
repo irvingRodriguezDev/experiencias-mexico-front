@@ -20,6 +20,8 @@ import HomeIcon from "@mui/icons-material/Home";
 import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
 import ToursContext from "../../context/Tours/ToursContext";
 import SearchBar from "../searchBar/searchBar";
+import TourDetailModal from "./TourDetailModal";
+import MethodGet from "../../config/Service";
 const tabStyles = {
   textTransform: "none",
   fontWeight: 500,
@@ -61,63 +63,6 @@ function a11yProps(index) {
     "aria-controls": `full-width-tabpanel-${index}`,
   };
 }
-const categories = [
-  "Tour",
-  "Hotel",
-  "Restaurant",
-  "Rental",
-  "Activity",
-  "Car Rental",
-];
-
-const tours = [
-  {
-    id: 1,
-    title: "Two Hour Walking Tour Of Manhattan",
-    location: "Venice City, Italy",
-    days: "7 Days",
-    price: 320,
-    rating: 5,
-    reviews: 5,
-    badge: "New",
-    image: sidney,
-  },
-  {
-    id: 2,
-    title: "When You Visit The Eternal Dubai City",
-    location: "Dubai, Emirates",
-    days: "2 Days",
-    price: 149,
-    oldPrice: 299,
-    rating: 5,
-    reviews: 5,
-    badge: "% Offer",
-    image: venecia,
-  },
-  {
-    id: 3,
-    title: "The Pulau Seribu, Jakarta Indonesia",
-    location: "51 Dekor Land, Thailand",
-    days: "5 Days",
-    price: 349,
-    rating: 5,
-    reviews: 5,
-    badge: "New",
-    image: sidney,
-  },
-  {
-    id: 4,
-    title: "American Parks Trail End Rapid City Express",
-    location: "New York, USA",
-    days: "3 Days",
-    price: 255,
-    oldPrice: 280,
-    rating: 4,
-    reviews: 4,
-    badge: "Featured",
-    image: venecia,
-  },
-];
 
 const Tours = () => {
   const theme = useTheme();
@@ -131,6 +76,24 @@ const Tours = () => {
   useEffect(() => {
     getAllTours();
   }, []);
+
+  const [open, setOpen] = useState(false);
+  const [selectedTour, setSelectedTour] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  const handleOpen = async (tour) => {
+    setOpen(true);
+    setLoading(true);
+
+    try {
+      const { data } = await MethodGet(`/tours/slug/${tour.slug}`);
+      setSelectedTour(data);
+    } catch (e) {
+      console.error(e);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <Grid container spacing={2} sx={{ backgroundColor: "#F4F4F5" }}>
@@ -162,9 +125,7 @@ const Tours = () => {
               Algo Increible Te Espera
             </Typography>
           </Grid>
-          {/* <Grid size={12}>
-            <SearchBar />
-          </Grid> */}
+
           <Grid size={12} sx={{ display: "flex", justifyContent: "center" }}>
             <Box
               sx={{
@@ -172,86 +133,27 @@ const Tours = () => {
                 width: "75%",
               }}
             >
-              {/* <AppBar
-                position='static'
-                elevation={0}
-                sx={{
-                  bgcolor: "transparent",
-                  width: "80%",
-                  borderBottom: "1px solid #e0e0e0", // línea gris inferior
-                }}
-              >
-                <Tabs
-                  value={value}
-                  onChange={handleChange}
-                  variant='fullWidth'
-                  textColor='inherit'
-                  TabIndicatorProps={{
-                    sx: {
-                      backgroundColor: "#5b2dff", // morado
-                      height: "4px",
-                      borderRadius: "4px",
-                    },
-                  }}
-                  sx={{
-                    "& .MuiTabs-flexContainer": {
-                      gap: "8px",
-                    },
-                  }}
-                >
-                  <Tab
-                    icon={<FlightIcon />}
-                    iconPosition='start'
-                    label='Tour'
-                    sx={tabStyles}
-                  />
-                  <Tab
-                    icon={<HotelIcon />}
-                    iconPosition='start'
-                    label='Hotel'
-                    sx={tabStyles}
-                  />
-                  <Tab
-                    icon={<RestaurantIcon />}
-                    iconPosition='start'
-                    label='Restaurant'
-                    sx={tabStyles}
-                  />
-                  <Tab
-                    icon={<HomeIcon />}
-                    iconPosition='start'
-                    label='Rental'
-                    sx={tabStyles}
-                  />
-                  <Tab
-                    icon={<DirectionsCarIcon />}
-                    iconPosition='start'
-                    label='Car Rental'
-                    sx={tabStyles}
-                  />
-                </Tabs>
-              </AppBar> */}
               <TabPanel value={value} index={0} dir={theme.direction}>
                 <Grid container spacing={2}>
                   {tours.map((tour, index) => (
                     <Grid size={{ xs: 12, sm: 6, md: 4, lg: 4 }} key={index}>
-                      <TourCard key={tour.id} tour={tour} />
+                      <TourCard
+                        key={tour.id}
+                        tour={tour}
+                        onOpen={() => handleOpen(tour)}
+                      />
                     </Grid>
                   ))}
                 </Grid>
               </TabPanel>
-              <TabPanel value={value} index={1} dir={theme.direction}>
-                {tours.map((tour) => (
-                  <TourCard key={tour.id} tour={tour} />
-                ))}
-              </TabPanel>
-              <TabPanel value={value} index={2} dir={theme.direction}>
-                {tours.map((tour) => (
-                  <TourCard key={tour.id} tour={tour} />
-                ))}
-              </TabPanel>
             </Box>
           </Grid>
+          <TourDetailModal
+            open={open}
+            onClose={() => setOpen(false)}
+            tour={selectedTour}
+            loading={loading}
+          />
         </Grid>
       </Grid>
       <Grid size={12} sx={{ display: "flex", justifyContent: "flex-start" }}>
