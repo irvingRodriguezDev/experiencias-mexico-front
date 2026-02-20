@@ -94,8 +94,14 @@ const Discover = () => {
             sx={{ borderRadius: "12px", fontWeight: "bold", color: "#A3BB13" }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            onClick={() =>
+              window.scrollBy({
+                top: 680,
+                behavior: "smooth",
+              })
+            }
           >
-            Explorar experiencias →
+            Explorar experiencias
           </Button>
         </motion.div>
       </Box>

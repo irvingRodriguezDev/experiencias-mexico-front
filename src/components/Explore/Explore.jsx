@@ -26,6 +26,12 @@ const Explore = () => {
             borderRadius: "12px",
             fontWeight: "bold",
           }}
+          onClick={() =>
+            window.scrollBy({
+              top: -1850,
+              behavior: "smooth",
+            })
+          }
         >
           Reserva ahora →
         </Button>

@@ -135,11 +135,14 @@ const TourCard = ({ tour }) => {
               mt: "auto",
               display: "inline-flex",
               flexDirection: "column",
-              px: 2,
               py: 1,
-              borderRadius: 3,
-              bgcolor: "primary.main",
+              bgcolor: "#01528C",
               color: "#fff",
+              width: "100%  ",
+              borderTopRightRadius: "18px",
+              borderBottomLeftRadius: "18px",
+              borderTopLeftRadius: "3px  ",
+              borderBottomRightRadius: "3px",
             }}
           >
             {tour.old_price && (

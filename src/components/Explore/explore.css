@@ -1,7 +1,7 @@
 /* CONTENEDOR PRINCIPAL */
 .explore {
   position: relative;
-  height: 80vh;
+  height: 100vh;
   min-height: 600px;
   background: url("../../assets/banner_explore.png") center / cover no-repeat;
   display: flex;

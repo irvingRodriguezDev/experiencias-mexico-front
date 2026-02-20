@@ -37,7 +37,7 @@ const HeroTours = ({ tours = [] }) => {
                 position: "absolute",
                 inset: 0,
                 background:
-                  "linear-gradient(180deg, rgba(0,0,0,0.45), rgba(0,0,0,0.75))",
+                  "linear-gradient(180deg, rgba(0,0,0,0.25), rgba(0,0,0,0.45))",
                 zIndex: 1,
               }}
             />
@@ -158,7 +158,7 @@ const HeroTours = ({ tours = [] }) => {
                     },
                   }}
                 >
-                  Tomar este tour →
+                  Me interesa →
                 </Button>
               </Box>
             </Box>

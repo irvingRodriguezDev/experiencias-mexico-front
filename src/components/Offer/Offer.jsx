@@ -94,6 +94,12 @@ const Offer = () => {
                 fontWeight: "bold",
                 color: "#01528C",
               }}
+              onClick={() =>
+                window.scrollBy({
+                  top: -1090,
+                  behavior: "smooth",
+                })
+              }
             >
               Descubrir experiencias →
             </Button>

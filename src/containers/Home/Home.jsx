@@ -14,7 +14,6 @@ const Home = () => {
       <Tours />
       <Offer />
       <Explore />
-      {/* <Blog /> */}
     </MainLayout>
   );
 };

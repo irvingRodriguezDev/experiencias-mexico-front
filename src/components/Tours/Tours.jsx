@@ -133,7 +133,7 @@ const Tours = () => {
   }, []);
 
   return (
-    <Grid container spacing={2} sx={{ backgroundColor: "#f8f8f8" }}>
+    <Grid container spacing={2} sx={{ backgroundColor: "#F4F4F5" }}>
       <Grid size={12} sx={{ display: "flex", justifyContent: "flex-end" }}>
         <img src={avion} />
       </Grid>
@@ -145,9 +145,9 @@ const Tours = () => {
         <Grid container spacing={2}>
           <Grid size={12}>
             <Typography
-              sx={{ color: "purple" }}
+              sx={{ color: "#A3BB13" }}
               textAlign='center'
-              fontFamily='monospace'
+              fontSize='25px'
             >
               Nuestros Paquetes Más Populares
             </Typography>
@@ -155,7 +155,7 @@ const Tours = () => {
           <Grid size={12}>
             <Typography
               fontWeight='bold'
-              color='#000'
+              color='#01528C'
               textAlign='center'
               fontSize='40px'
             >

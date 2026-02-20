@@ -1,72 +1,102 @@
-import {
-  AppBar,
-  Toolbar,
-  Box,
-  Typography,
-  Button,
-  IconButton,
-} from "@mui/material";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import MenuIcon from "@mui/icons-material/Menu";
-import "./header.css";
-import logo from "../../../assets/LOGO EXPERIENCIAS MEXICO VECTOR.png";
+import { AppBar, Toolbar, Box, Button, useScrollTrigger } from "@mui/material";
 import Phoneicon from "../../icons/Phoneicon";
+import logo from "../../../assets/LOGO EXPERIENCIAS MEXICO VECTOR.png";
+import { Link } from "react-router-dom";
+
+const HEADER_HEIGHT = { xs: 64, md: 72 };
 
 const Header = () => {
+  const scrolled = useScrollTrigger({
+    disableHysteresis: true,
+    threshold: 1, // en cuanto hay scroll
+  });
+
   return (
-    <AppBar position='absolute' className='header'>
-      <Toolbar className='header-toolbar'>
-        {/* Logo */}
-        <Box className='logo'>
-          <Typography variant='h6'>
-            <img src={logo} width={100} height={80} />
-          </Typography>
-        </Box>
+    <>
+      <AppBar
+        elevation={0}
+        position='fixed'
+        sx={{
+          top: 0,
+          left: 0,
+          right: 0,
+          width: "100vw",
+          backgroundColor: scrolled
+            ? "rgba(163,187,19,0.85)"
+            : "rgba(163,187,19,0.95)",
+          backdropFilter: scrolled ? "blur(10px)" : "none",
+          transition: "all .35s ease",
+          zIndex: (theme) => theme.zIndex.appBar,
+        }}
+      >
+        <Toolbar
+          disableGutters
+          sx={{
+            minHeight: HEADER_HEIGHT,
+            width: "100%",
+            px: { xs: 2, md: 4 },
+            display: "flex",
+            alignItems: "center",
+          }}
+        >
+          {/* Logo */}
+          <Link to={"/"} style={{ textDecoration: "none" }}>
+            <Box
+              component='img'
+              src={logo}
+              alt='Experiencias México'
+              sx={{
+                width: { xs: 80, md: scrolled ? 90 : 110 },
+                transition: "all .3s ease",
+              }}
+            />
+          </Link>
 
-        {/* Navigation */}
-        {/* <Box className='nav-links'>
-          <Button color='inherit'>Home</Button>
-          <Button color='inherit'>Features</Button>
-          <Button color='inherit'>Pages</Button>
-          <Button color='inherit'>Blogs</Button>
-          <Button color='inherit'>Contact</Button>
-        </Box> */}
+          <Box sx={{ flexGrow: 1 }} />
 
-        {/* Actions */}
-        <Box className='actions'>
+          {/* Phone */}
           <Button
             component='a'
             href='tel:+525652657371'
-            startIcon={<Phoneicon width={22} color='#FFF' />}
+            startIcon={<Phoneicon width={20} height={20} color='#FFF' />}
             sx={{
+              marginRight: 8,
+              display: "flex",
+              alignItems: "center",
+              gap: 1,
               color: "#FFF",
+              fontWeight: 600,
+              fontSize: { xs: 0, sm: "18px" },
+              lineHeight: 1,
               textTransform: "none",
-              fontWeight: 700,
-              fontSize: "20px",
-              p: 0,
-              minWidth: "auto",
-              backgroundColor: "transparent",
-              boxShadow: "none",
+              minWidth: { xs: 42, sm: "auto" },
+              height: 42,
+              px: { xs: 0, sm: 2 },
+              borderRadius: 999,
+              backgroundColor: "rgba(255,255,255,0.08)",
+              backdropFilter: "blur(6px)",
+              "& svg": { display: "block" },
               "&:hover": {
-                backgroundColor: "rgba(163, 187, 19,0.08)",
-                textDecoration: "none",
-                boxShadow: "none",
+                backgroundColor: "rgba(163,187,19,0.25)",
+                transform: "translateY(-1px)",
+                color: "#01528C",
               },
+              transition: "all .3s ease",
             }}
           >
-            +52 5652 6573 71
+            <Box
+              component='span'
+              sx={{ display: { xs: "none", sm: "inline" } }}
+            >
+              +52 5652 6573 71
+            </Box>
           </Button>
+        </Toolbar>
+      </AppBar>
 
-          {/* <Button variant='outlined' className='login-btn'>
-            Login
-          </Button>
-
-          <IconButton color='inherit'>
-            <MenuIcon />
-          </IconButton> */}
-        </Box>
-      </Toolbar>
-    </AppBar>
+      {/* Compensación SOLO cuando el header es fixed */}
+      {scrolled && <Box sx={{ height: HEADER_HEIGHT }} />}
+    </>
   );
 };
 
