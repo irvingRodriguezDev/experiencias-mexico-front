@@ -91,7 +91,12 @@ const Discover = () => {
             variant='contained'
             color='primary'
             size='large'
-            sx={{ borderRadius: "12px", fontWeight: "bold", color: "#A3BB13" }}
+            sx={{
+              borderRadius: "12px",
+              fontWeight: "bold",
+              color: "#A3BB13",
+              bgcolor: "#01528C",
+            }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() =>

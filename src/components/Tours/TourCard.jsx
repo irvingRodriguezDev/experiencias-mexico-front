@@ -17,6 +17,8 @@ import ScheduleIcon from "@mui/icons-material/Schedule";
 import { Link } from "react-router-dom";
 import CalendarIcon from "../icons/CalendarIcon";
 import FormatDate from "../../utils/FormatDate";
+import LocationIcon from "../icons/Location";
+import TimeIcon from "../icons/TimeIcon";
 const TourCard = ({ tour, onOpen }) => {
   return (
     <Paper elevation={3} sx={{ borderRadius: "12px" }}>
@@ -105,15 +107,15 @@ const TourCard = ({ tour, onOpen }) => {
 
           <Stack spacing={0.8} sx={{ color: "text.secondary", mb: 2 }}>
             <Stack direction='row' spacing={1} alignItems='center'>
-              <LocationOnIcon fontSize='small' />
+              <LocationIcon width={28} />
               <Typography variant='body2'>{tour.short_description}</Typography>
             </Stack>
             <Stack direction='row' spacing={1} alignItems='center'>
-              <CalendarIcon width={30} fontSize='small' />
+              <CalendarIcon width={30} />
               <Typography variant='body2'>{FormatDate(tour.date)}</Typography>
             </Stack>
             <Stack direction='row' spacing={1} alignItems='center'>
-              <ScheduleIcon fontSize='small' />
+              <TimeIcon width={28} />
               <Typography variant='body2'>{tour.duration}</Typography>
             </Stack>
           </Stack>

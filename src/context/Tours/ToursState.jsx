@@ -1,18 +1,27 @@
 import React, { useReducer } from "react";
-import MethodGet, { MethodDelete, MethodPost } from "../../config/Service";
-import Swal from "sweetalert2";
+import MethodGet from "../../config/Service";
 import ToursReducer from "./ToursReducer";
 import ToursContext from "./ToursContext";
 import { GET_ALL_TOURS, GET_CURRENT_TOUR, LATEST_TOURS } from "../../types";
+
 const ToursState = ({ children }) => {
   const initialState = {
     tours: [],
+    total: 0,
+    pages: 0,
+    loading: false,
+    tour: null,
     ErrorsApi: [],
   };
+
   const [state, dispatch] = useReducer(ToursReducer, initialState);
 
-  const getAllTours = () => {
-    let url = "/tours";
+  /* =========================
+     📄 LISTADO / BÚSQUEDA
+  ========================= */
+  const getAllTours = (query = "") => {
+    const url = query ? `/tours?${query}` : "/tours";
+    dispatch({ type: "LOADING" });
     MethodGet(url)
       .then((res) => {
         dispatch({
@@ -21,13 +30,15 @@ const ToursState = ({ children }) => {
         });
       })
       .catch((error) => {
-        console.log(error, "ocurrio un error al obtener las lineas");
+        console.error("Error al obtener tours", error);
       });
   };
 
+  /* =========================
+     📌 TOUR DETALLE
+  ========================= */
   const getCurrentTour = (id) => {
-    let url = `/tours/${id}`;
-    MethodGet(url)
+    MethodGet(`/tours/${id}`)
       .then((res) => {
         dispatch({
           type: GET_CURRENT_TOUR,
@@ -35,13 +46,15 @@ const ToursState = ({ children }) => {
         });
       })
       .catch((error) => {
-        console.log(error, "ocurrio un error al obtener el curso");
+        console.error("Error al obtener el tour", error);
       });
   };
 
+  /* =========================
+     🆕 ÚLTIMOS TOURS
+  ========================= */
   const getLatestTours = () => {
-    let url = "/tours/latest";
-    MethodGet(url)
+    MethodGet("/tours/latest")
       .then((res) => {
         dispatch({
           type: LATEST_TOURS,
@@ -49,7 +62,7 @@ const ToursState = ({ children }) => {
         });
       })
       .catch((error) => {
-        console.log(error);
+        console.error(error);
       });
   };
 
@@ -57,6 +70,10 @@ const ToursState = ({ children }) => {
     <ToursContext.Provider
       value={{
         tours: state.tours,
+        total: state.total,
+        pages: state.pages,
+        tour: state.tour,
+        loading: state.loading,
         getAllTours,
         getCurrentTour,
         getLatestTours,

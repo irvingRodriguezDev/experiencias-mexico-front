@@ -1,12 +1,20 @@
 import { GET_ALL_TOURS, GET_CURRENT_TOUR, LATEST_TOURS } from "../../types";
 
-export default (state, action) => {
+const ToursReducer = (state, action) => {
   switch (action.type) {
+    case "LOADING":
+      return {
+        ...state,
+        loading: true,
+      };
+
     case GET_ALL_TOURS:
       return {
         ...state,
         tours: action.payload.tours,
-        ErrorsApi: [],
+        total: action.payload.total,
+        pages: action.payload.pages,
+        loading: false,
       };
 
     case LATEST_TOURS:
@@ -19,10 +27,12 @@ export default (state, action) => {
     case GET_CURRENT_TOUR:
       return {
         ...state,
-        success: true,
         tour: action.payload,
       };
+
     default:
       return state;
   }
 };
+
+export default ToursReducer;
