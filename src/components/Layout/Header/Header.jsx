@@ -2,7 +2,7 @@ import { AppBar, Toolbar, Box, Button, useScrollTrigger } from "@mui/material";
 import Phoneicon from "../../icons/Phoneicon";
 import logo from "../../../assets/LOGO EXPERIENCIAS MEXICO VECTOR.png";
 import { Link } from "react-router-dom";
-
+import CallIcon from "@mui/icons-material/Call";
 const HEADER_HEIGHT = { xs: 64, md: 72 };
 
 const Header = () => {
@@ -58,7 +58,12 @@ const Header = () => {
           <Button
             component='a'
             href='tel:+525652657371'
-            startIcon={<Phoneicon width={20} height={20} color='#FFF' />}
+            startIcon={
+              <CallIcon
+                sx={{ width: { xs: 40, md: 30 }, height: { xs: 40, md: 30 } }}
+                color='#FFF'
+              />
+            }
             sx={{
               marginRight: 8,
               display: "flex",
