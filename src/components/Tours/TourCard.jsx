@@ -9,6 +9,7 @@ import {
   Stack,
   Tooltip,
   Paper,
+  Grid,
 } from "@mui/material";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
@@ -19,6 +20,8 @@ import CalendarIcon from "../icons/CalendarIcon";
 import FormatDate from "../../utils/FormatDate";
 import LocationIcon from "../icons/Location";
 import TimeIcon from "../icons/TimeIcon";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import StyleIcon from "@mui/icons-material/Style";
 const TourCard = ({ tour, onOpen }) => {
   return (
     <Paper elevation={3} sx={{ borderRadius: "12px" }}>

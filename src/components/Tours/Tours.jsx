@@ -64,15 +64,12 @@ const Tours = () => {
   ===================== */
   const handleOpen = async (tour) => {
     setOpen(true);
-    setLoading(true);
 
     try {
       const { data } = await MethodGet(`/tours/slug/${tour.slug}`);
       setSelectedTour(data);
     } catch (error) {
       console.error(error);
-    } finally {
-      setLoading(false);
     }
   };
 

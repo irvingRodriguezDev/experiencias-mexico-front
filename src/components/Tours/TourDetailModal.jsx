@@ -18,6 +18,8 @@ import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import WhatsAppIcon from "../icons/WhatsAppIcon";
 import CalendarIcon from "../icons/CalendarIcon";
 import FormatDate from "../../utils/FormatDate";
+import StyleIcon from "@mui/icons-material/Style";
+
 export default function TourDetailModal({ open, onClose, tour, loading }) {
   if (loading) {
     return (
@@ -213,9 +215,9 @@ export default function TourDetailModal({ open, onClose, tour, loading }) {
 
                 <Grid container spacing={2}>
                   {tour.tags.map((tag, i) => (
-                    <Grid item xs={12} sm={6} key={i}>
+                    <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3 }} key={i}>
                       <Stack direction='row' spacing={1.5} alignItems='center'>
-                        <CheckCircleIcon sx={{ color: "#A3BB13" }} />
+                        <StyleIcon sx={{ color: "#A3BB13" }} />
                         <Typography fontWeight={500}>{tag}</Typography>
                       </Stack>
                     </Grid>
@@ -279,7 +281,7 @@ export default function TourDetailModal({ open, onClose, tour, loading }) {
                   bgcolor: "#A3BB13",
                   color: "#01528C",
                   borderRadius: 3,
-                  "&:hover": { bgcolor: "#91a911", color: "#01528C" },
+                  "&:hover": { bgcolor: "#A3BB13", color: "#01528C" },
                 }}
               >
                 Reservar ahora
