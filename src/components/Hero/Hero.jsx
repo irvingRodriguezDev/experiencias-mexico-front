@@ -6,7 +6,7 @@ import { useContext, useEffect } from "react";
 import HeroTours from "./HeroTours";
 
 const Hero = () => {
-  const { getLatestTours, tours } = useContext(ToursContext);
+  const { getLatestTours, latest_tours } = useContext(ToursContext);
 
   useEffect(() => {
     getLatestTours();
@@ -14,7 +14,7 @@ const Hero = () => {
 
   return (
     <Box className='hero'>
-      <HeroTours tours={tours} />
+      <HeroTours tours={latest_tours} />
     </Box>
   );
 };

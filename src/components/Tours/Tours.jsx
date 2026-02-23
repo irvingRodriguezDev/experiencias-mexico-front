@@ -118,8 +118,12 @@ const Tours = () => {
               </Grid>
             ))
           ) : (
-            <Grid size={12}>
-              <Typography align='center' color='text.secondary'>
+            <Grid size={{ xs: 12, sm: 12, md: 12, lg: 12 }}>
+              <Typography
+                align='center'
+                color='text.secondary'
+                sx={{ width: "100%" }}
+              >
                 No se encontraron tours 😕
               </Typography>
             </Grid>

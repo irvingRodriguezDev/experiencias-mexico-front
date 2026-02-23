@@ -20,7 +20,7 @@ const ToursReducer = (state, action) => {
     case LATEST_TOURS:
       return {
         ...state,
-        tours: action.payload,
+        latest_tours: action.payload,
         ErrorsApi: [],
       };
 

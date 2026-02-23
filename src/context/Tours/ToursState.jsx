@@ -7,6 +7,7 @@ import { GET_ALL_TOURS, GET_CURRENT_TOUR, LATEST_TOURS } from "../../types";
 const ToursState = ({ children }) => {
   const initialState = {
     tours: [],
+    latest_tours: [],
     total: 0,
     pages: 0,
     loading: false,
@@ -70,6 +71,7 @@ const ToursState = ({ children }) => {
     <ToursContext.Provider
       value={{
         tours: state.tours,
+        latest_tours: state.latest_tours,
         total: state.total,
         pages: state.pages,
         tour: state.tour,
