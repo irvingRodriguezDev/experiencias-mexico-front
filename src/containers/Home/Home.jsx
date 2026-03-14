@@ -3,9 +3,9 @@ import Discover from "../../components/Discover/Discover";
 import Explore from "../../components/Explore/Explore";
 import Hero from "../../components/Hero/Hero";
 import Offer from "../../components/Offer/Offer";
-import SearchBar from "../../components/searchBar/searchBar";
 import Tours from "../../components/Tours/Tours";
 import MainLayout from "../../components/Layout/Layout";
+import About from "../../components/About/About";
 const Home = () => {
   return (
     <MainLayout>
@@ -13,6 +13,7 @@ const Home = () => {
       <Discover />
       <Tours />
       <Offer />
+      {/* <About /> */}
       <Explore />
     </MainLayout>
   );

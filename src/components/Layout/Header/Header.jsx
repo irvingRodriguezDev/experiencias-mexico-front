@@ -1,15 +1,43 @@
-import { AppBar, Toolbar, Box, Button, useScrollTrigger } from "@mui/material";
-import Phoneicon from "../../icons/Phoneicon";
+import {
+  AppBar,
+  Toolbar,
+  Box,
+  Button,
+  useScrollTrigger,
+  Typography,
+  IconButton,
+  Menu,
+} from "@mui/material";
 import logo from "../../../assets/LOGO EXPERIENCIAS MEXICO VECTOR.png";
 import { Link } from "react-router-dom";
 import CallIcon from "@mui/icons-material/Call";
+import { useState } from "react";
+import MenuItem from "@mui/material/MenuItem";
+import MenuIcon from "@mui/icons-material/Menu";
 const HEADER_HEIGHT = { xs: 64, md: 72 };
-
+const pages = [
+  { name: "¿Buscas Transporte?", link: "/transport" },
+  { name: "¿Quienes somos?", link: "/nosotros" },
+];
+const settings = ["Profile", "Account", "Dashboard", "Logout"];
 const Header = () => {
   const scrolled = useScrollTrigger({
     disableHysteresis: true,
     threshold: 1, // en cuanto hay scroll
   });
+
+  const [anchorElNav, setAnchorElNav] = useState(null);
+
+  const handleOpenNavMenu = (event) => {
+    setAnchorElNav(event.currentTarget);
+  };
+  const handleOpenUserMenu = (event) => {
+    setAnchorElUser(event.currentTarget);
+  };
+
+  const handleCloseNavMenu = () => {
+    setAnchorElNav(null);
+  };
 
   return (
     <>
@@ -48,10 +76,88 @@ const Header = () => {
               sx={{
                 width: { xs: 80, md: scrolled ? 90 : 110 },
                 transition: "all .3s ease",
+                display: { xs: "none", md: "flex" },
               }}
             />
           </Link>
 
+          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+            <IconButton
+              size='large'
+              aria-label='account of current user'
+              aria-controls='menu-appbar'
+              aria-haspopup='true'
+              onClick={handleOpenNavMenu}
+              color='inherit'
+            >
+              <MenuIcon />
+            </IconButton>
+            <Menu
+              id='menu-appbar'
+              anchorEl={anchorElNav}
+              anchorOrigin={{
+                vertical: "bottom",
+                horizontal: "left",
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "left",
+              }}
+              open={Boolean(anchorElNav)}
+              onClose={handleCloseNavMenu}
+              sx={{ display: { xs: "block", md: "none" } }}
+            >
+              {pages.map((page) => (
+                <Link
+                  to={page.link}
+                  style={{ textDecoration: "none", color: "#01528c" }}
+                >
+                  <MenuItem key={page} onClick={handleCloseNavMenu}>
+                    <Typography fontWeight='bold' sx={{ textAlign: "center" }}>
+                      {page.name}
+                    </Typography>
+                  </MenuItem>
+                </Link>
+              ))}
+            </Menu>
+          </Box>
+
+          <Box
+            sx={{
+              position: "absolute",
+              left: "50%",
+              transform: "translateX(-50%)",
+              display: { xs: "none", md: "flex" },
+              alignItems: "center",
+              gap: 3,
+            }}
+          >
+            {pages.map((page) => (
+              <Link to={page.link}>
+                <Typography
+                  sx={{ color: "#fff", "&:hover": { color: "#01528C" } }}
+                  fontWeight='bold'
+                >
+                  {page.name}
+                </Typography>
+              </Link>
+            ))}
+          </Box>
+          <Box sx={{ flexGrow: 0 }}>
+            <Link to={"/"} style={{ textDecoration: "none" }}>
+              <Box
+                component='img'
+                src={logo}
+                alt='Experiencias México'
+                sx={{
+                  width: { xs: 80, md: scrolled ? 90 : 110 },
+                  transition: "all .3s ease",
+                  display: { md: "none" },
+                }}
+              />
+            </Link>
+          </Box>
           <Box sx={{ flexGrow: 1 }} />
 
           {/* Phone */}
