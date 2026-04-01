@@ -9,9 +9,13 @@ import DescriptionSection from "./DescriptionSection";
 import BenefitsMarquee from "./BenefitsMarquee";
 import SubmitSection from "./SubmitSection";
 import MainLayout from "../../components/Layout/Layout";
+import clienteAxios from "../../config/Axios";
+import { MethodPost } from "../../config/Service";
+import Swal from "sweetalert2";
+import SuccessView from "./SuccessView";
 
 const initialForm = {
-  tipoViaje: "sencillo",
+  tipoViaje: "one_way",
   nombre: "",
   telefono: "",
   correo: "",
@@ -28,6 +32,7 @@ const initialForm = {
 const QuoteForm = () => {
   const [form, setForm] = useState(initialForm);
   const [submitted, setSubmitted] = useState(false);
+  const [typeUnit, setTypeUnit] = useState(null);
 
   const handleChange = (field) => (e) =>
     setForm((prev) => ({ ...prev, [field]: e.target.value }));
@@ -36,103 +41,86 @@ const QuoteForm = () => {
     setForm((prev) => ({ ...prev, tipoViaje: val }));
 
   const handleSubmit = async () => {
+    const fechaCombinada = new Date(`${form.fechaInicio} ${form.horaInicio}`);
+    const tieneFechaFin = form.fechaFin && form.horaFin;
+
+    // 2. Creamos la fecha solo si los datos están presentes
+    const fechaCombinadaFin = tieneFechaFin
+      ? new Date(`${form.fechaFin} ${form.horaFin}`)
+      : null;
+
+    // 3. Validamos si la fecha resultante es válida antes de convertirla a ISO
+    const returnAtValue =
+      fechaCombinadaFin && !isNaN(fechaCombinadaFin.getTime())
+        ? fechaCombinadaFin.toISOString()
+        : null;
+    const data = {
+      tripType: form.tipoViaje,
+      contractorName: form.nombre,
+      contractorPhone: form.telefono,
+      contractorEmail: form.correo,
+      origin: form.origen,
+      destination: form.destino,
+      unitTypeId: form.tipoUnidad,
+      departureAt: fechaCombinada.toISOString(),
+      returnAt: returnAtValue,
+      description: form.descripcion ?? null,
+    };
+
     // Conecta tu API aquí:
-    // await fetch("https://tu-api.com/cotizaciones", {
-    //   method: "POST",
-    //   headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify(form),
-    // });
-    console.log("Payload →", form);
-    setSubmitted(true);
+    // 1. Mostrar Spinner de carga inmediatamente
+    Swal.fire({
+      title: "Procesando cotización...",
+      text: "Por favor espera un momento",
+      allowOutsideClick: false,
+      didOpen: () => {
+        Swal.showLoading(); // Esto activa el spinner oficial de SweetAlert2
+      },
+    });
+
+    try {
+      const url = "/quotation";
+      const res = await MethodPost(url, data);
+
+      // 2. Si la respuesta es exitosa (Status 200 o 201)
+      if (res.status === 200 || res.status === 201) {
+        Swal.fire({
+          title: "¡Exitoso!",
+          text: "Tu cotización se ha creado con éxito, en breve nuestro equipo se contactará contigo.",
+          icon: "success",
+          timer: 3500,
+          showConfirmButton: false,
+        });
+
+        setSubmitted(true);
+        // Aquí podrías resetear el formulario si es necesario
+      }
+    } catch (error) {
+      // 3. Manejo de errores con fallback por si el servidor no envía mensaje
+      const errorMessage =
+        error.response?.data?.message ||
+        "No pudimos procesar tu solicitud en este momento.";
+
+      Swal.fire({
+        title: "Ocurrió un problema",
+        text: errorMessage,
+        icon: "error",
+        confirmButtonText: "Entendido",
+        confirmButtonColor: "#01528C", // Usando tu azul corporativo
+      });
+    }
+    // console.log("Payload →", form);
   };
 
   if (submitted)
     return (
-      <Box
-        sx={{
-          width: "100%",
-          background: "#f6f6f6",
-          minHeight: "60vh",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          px: 3,
-          fontFamily: "'Jost', sans-serif",
+      <SuccessView
+        contractorName={form.nombre}
+        onReset={() => {
+          setForm(initialForm);
+          setSubmitted(false);
         }}
-      >
-        <Box sx={{ textAlign: "center", maxWidth: 480 }}>
-          <Box
-            sx={{
-              width: 72,
-              height: 72,
-              borderRadius: "50%",
-              background: "rgba(163,187,19,0.12)",
-              border: "2px solid #A3BB13",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              mx: "auto",
-              mb: 3,
-            }}
-          >
-            <svg width='28' height='28' viewBox='0 0 28 28' fill='none'>
-              <path
-                d='M5 14l6 6L23 8'
-                stroke='#A3BB13'
-                strokeWidth='2.5'
-                strokeLinecap='round'
-                strokeLinejoin='round'
-              />
-            </svg>
-          </Box>
-          <Typography
-            sx={{
-              fontSize: 28,
-              fontWeight: 600,
-              color: "#01528C",
-              mb: 1,
-              fontFamily: "'Jost', sans-serif",
-            }}
-          >
-            ¡Solicitud enviada!
-          </Typography>
-          <Typography
-            sx={{
-              fontSize: 14,
-              fontWeight: 300,
-              color: "rgba(1,82,140,0.6)",
-              lineHeight: 1.8,
-              mb: 4,
-              fontFamily: "'Jost', sans-serif",
-            }}
-          >
-            Hemos recibido tu solicitud. En breve nos comunicaremos contigo vía
-            WhatsApp y correo electrónico.
-          </Typography>
-          <Button
-            onClick={() => {
-              setForm(initialForm);
-              setSubmitted(false);
-            }}
-            sx={{
-              fontFamily: "'Jost', sans-serif",
-              fontWeight: 400,
-              fontSize: 12,
-              letterSpacing: "0.2em",
-              textTransform: "uppercase",
-              color: "#01528C",
-              border: "1.5px solid #01528C",
-              borderRadius: "10px",
-              px: 4,
-              py: 1.4,
-              transition: "all 0.3s",
-              "&:hover": { background: "#01528C", color: "#fff" },
-            }}
-          >
-            Nueva cotización
-          </Button>
-        </Box>
-      </Box>
+      />
     );
 
   return (
@@ -181,7 +169,13 @@ const QuoteForm = () => {
                 onChange={handleTipoViaje}
               />
               <ContactSection form={form} onChange={handleChange} />
-              <RouteSection form={form} onChange={handleChange} />
+              <RouteSection
+                form={form}
+                setForm={setForm}
+                onChange={handleChange}
+                setTypeUnit={setTypeUnit}
+                typeUnit={typeUnit}
+              />
               <ScheduleSection form={form} onChange={handleChange} />
               <BenefitsMarquee />
               <DescriptionSection

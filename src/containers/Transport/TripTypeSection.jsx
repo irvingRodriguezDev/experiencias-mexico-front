@@ -18,8 +18,8 @@ const TripTypeSection = ({ value, onChange }) => (
       sx={{ gap: 1.5, flexWrap: "wrap" }}
     >
       {[
-        { value: "sencillo", label: "Viaje Sencillo", icon: "→" },
-        { value: "redondo", label: "Viaje Redondo", icon: "⇄" },
+        { value: "one_way", label: "Viaje Sencillo", icon: "→" },
+        { value: "round_trip", label: "Viaje Redondo", icon: "⇄" },
       ].map((opt) => (
         <ToggleButton
           key={opt.value}
