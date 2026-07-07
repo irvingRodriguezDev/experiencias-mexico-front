@@ -10,7 +10,7 @@ const SuccessView = ({ onReset, contractorName }) => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
       sx={{
-        width: "auto",
+        width: "100dvw",
         minHeight: "100vh",
         display: "flex",
         alignItems: "center",
@@ -23,7 +23,7 @@ const SuccessView = ({ onReset, contractorName }) => {
       <Box
         sx={{
           textAlign: "center",
-          maxWidth: 550,
+          maxWidth: "100%",
           p: 6,
           bgcolor: "#fff",
           borderRadius: "24px",
@@ -109,7 +109,7 @@ const SuccessView = ({ onReset, contractorName }) => {
         >
           Tu solicitud de cotización ha sido procesada. <br />
           Nuestro equipo te contactará por <b>WhatsApp</b> o <b>Email</b> en
-          menos de 15 minutos para finalizar los detalles.
+          menos de 24 horas para finalizar los detalles.
         </Typography>
 
         <Button

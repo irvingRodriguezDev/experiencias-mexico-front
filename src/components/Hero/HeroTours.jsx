@@ -7,7 +7,7 @@ import "swiper/css/effect-fade";
 import WhatsAppIcon from "../icons/WhatsAppIcon";
 import CalendarIcon from "../icons/CalendarIcon";
 import FormatDate from "../../utils/FormatDate";
-
+import Acapulco from "../../assets/Acapulco_uno.webp";
 const HeroTours = ({ tours = [] }) => {
   if (!tours.length) return null;
 
@@ -28,7 +28,7 @@ const HeroTours = ({ tours = [] }) => {
               sx={{
                 position: "absolute",
                 inset: 0,
-                backgroundImage: `url(${tour.cover_image})`,
+                backgroundImage: `url(${Acapulco})`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
               }}

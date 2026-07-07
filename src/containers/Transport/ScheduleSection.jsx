@@ -9,7 +9,7 @@ const pickerSx = {
   width: "100%",
   "& .MuiOutlinedInput-root": {
     fontFamily: "'Jost', sans-serif",
-    fontSize: 14,
+    // fontSize: 14,
     fontWeight: 300,
     borderRadius: "12px",
     background: "#ffffff",
@@ -26,7 +26,7 @@ const pickerSx = {
   "& .MuiInputBase-input": {
     fontFamily: "'Jost', sans-serif",
     fontWeight: 300,
-    fontSize: 14,
+    // fontSize: 14,
     color: "#01528C",
   },
   "& .MuiIconButton-root": {
@@ -35,7 +35,7 @@ const pickerSx = {
   },
   "& .MuiInputLabel-root": {
     fontFamily: "'Jost', sans-serif",
-    fontSize: 13,
+    // fontSize: 13,
     fontWeight: 300,
     color: "rgba(1,82,140,0.55)",
     "&.Mui-focused": { color: "#01528C" },
@@ -55,7 +55,7 @@ const popperSx = {
     "& .MuiPickersCalendarHeader-label": {
       fontFamily: "'Jost', sans-serif",
       fontWeight: 500,
-      fontSize: 14,
+      // fontSize: 14,
       color: "#01528C",
       textTransform: "capitalize",
     },
@@ -67,14 +67,14 @@ const popperSx = {
   "& .MuiDayCalendar-weekDayLabel": {
     fontFamily: "'Jost', sans-serif",
     fontWeight: 400,
-    fontSize: 12,
+    // fontSize: 12,
     color: "rgba(1,82,140,0.45)",
     textTransform: "capitalize",
   },
   "& .MuiPickersDay-root": {
     fontFamily: "'Jost', sans-serif",
     fontWeight: 300,
-    fontSize: 13,
+    // fontSize: 13,
     color: "#01528C",
     borderRadius: "8px",
     "&:hover": {
@@ -98,7 +98,7 @@ const popperSx = {
   "& .MuiPickersYear-yearButton": {
     fontFamily: "'Jost', sans-serif",
     fontWeight: 300,
-    fontSize: 13,
+    // fontSize: 13,
     color: "#01528C",
     borderRadius: "8px",
     "&.Mui-selected": {
@@ -110,7 +110,7 @@ const popperSx = {
   "& .MuiPickersMonth-monthButton": {
     fontFamily: "'Jost', sans-serif",
     fontWeight: 300,
-    fontSize: 13,
+    // fontSize: 13,
     color: "#01528C",
     borderRadius: "8px",
     textTransform: "capitalize",
@@ -125,7 +125,7 @@ const popperSx = {
     "& .MuiMenuItem-root": {
       fontFamily: "'Jost', sans-serif",
       fontWeight: 300,
-      fontSize: 14,
+      // fontSize: 14,
       color: "#01528C",
       borderRadius: "8px",
       mx: 0.5,
@@ -140,7 +140,7 @@ const popperSx = {
   "& .MuiDialogActions-root .MuiButton-root": {
     fontFamily: "'Jost', sans-serif",
     fontWeight: 400,
-    fontSize: 12,
+    // fontSize: 12,
     letterSpacing: "0.15em",
     textTransform: "uppercase",
     color: "#01528C",
@@ -209,7 +209,7 @@ const ScheduleSection = ({ form, onChange }) => {
         </Grid>
 
         {/* ── Regreso (solo viaje redondo) ── */}
-        {form.tipoViaje === "redondo" && (
+        {form.tipoViaje === "round_trip" && (
           <Grid size={12}>
             <Box
               sx={{
@@ -221,7 +221,7 @@ const ScheduleSection = ({ form, onChange }) => {
             >
               <Typography
                 sx={{
-                  fontSize: 11,
+                  // fontSize: 11,
                   fontWeight: 400,
                   letterSpacing: "0.15em",
                   color: "#A3BB13",

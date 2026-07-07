@@ -213,7 +213,7 @@ const BenefitChip = ({ label, icon }) => (
     </Box>
     <Typography
       sx={{
-        fontSize: 13,
+        // fontSize: 13,
         fontWeight: 400,
         color: "#01528C",
         whiteSpace: "nowrap",
@@ -229,12 +229,12 @@ const BenefitsMarquee = () => (
   <Box sx={{ mb: 5 }}>
     <Typography
       sx={{
-        fontSize: 11,
+        // fontSize: 11,
         fontWeight: 400,
         letterSpacing: "0.2em",
         color: "rgba(1,82,140,0.6)",
         textTransform: "uppercase",
-        fontFamily: "'Jost', sans-serif",
+        // fontFamily: "'Jost', sans-serif",
         mb: 2,
       }}
     >

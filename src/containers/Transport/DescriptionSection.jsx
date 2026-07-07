@@ -19,7 +19,7 @@ const DescriptionSection = ({ value, onChange }) => (
         "& .MuiOutlinedInput-root": {
           ...inputSx["& .MuiOutlinedInput-root"],
           alignItems: "flex-start",
-          fontSize: 19,
+          // fontSize: 19,
         },
       }}
     />

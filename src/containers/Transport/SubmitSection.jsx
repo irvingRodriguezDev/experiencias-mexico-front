@@ -34,7 +34,7 @@ const SubmitSection = ({ onSubmit }) => (
       sx={{
         background: "#01528C",
         color: "#ffffff",
-        fontFamily: "'Jost', sans-serif",
+        // fontFamily: "'Jost', sans-serif",
         fontWeight: 400,
         fontSize: 13,
         letterSpacing: "0.2em",

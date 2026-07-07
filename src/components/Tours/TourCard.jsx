@@ -22,6 +22,7 @@ import LocationIcon from "../icons/Location";
 import TimeIcon from "../icons/TimeIcon";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import StyleIcon from "@mui/icons-material/Style";
+import Acapulco from "../../assets/acapulco.webp";
 const TourCard = ({ tour, onOpen }) => {
   return (
     <Paper elevation={3} sx={{ borderRadius: "12px" }}>
@@ -43,7 +44,7 @@ const TourCard = ({ tour, onOpen }) => {
         <Box sx={{ position: "relative" }}>
           <CardMedia
             component='img'
-            image={tour.cover_image}
+            image={Acapulco}
             alt={tour.title}
             sx={{
               height: "auto",

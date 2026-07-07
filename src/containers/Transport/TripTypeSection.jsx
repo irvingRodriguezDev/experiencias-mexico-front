@@ -25,9 +25,9 @@ const TripTypeSection = ({ value, onChange }) => (
           key={opt.value}
           value={opt.value}
           sx={{
-            fontFamily: "'Jost', sans-serif",
+            // fontFamily: "'Jost', sans-serif",
             fontWeight: 300,
-            fontSize: 13,
+            // fontSize: 13,
             px: 3,
             py: 1.4,
             borderRadius: "12px !important",

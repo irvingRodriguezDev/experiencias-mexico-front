@@ -583,12 +583,13 @@ const About = () => (
       <Box sx={{ textAlign: "center", maxWidth: 640, mx: "auto", mb: 10 }}>
         <Typography
           sx={{
-            fontSize: 40,
+            fontSize: { xs: 30, md: 40 },
             fontWeight: "bold",
             letterSpacing: "0.4em",
             color: "#A3BB13",
             textTransform: "uppercase",
             mb: 2,
+            mt: { xs: 5, lg: 2 },
             fontFamily: "'Jost', sans-serif",
           }}
         >
