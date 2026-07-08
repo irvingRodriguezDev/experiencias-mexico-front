@@ -19,16 +19,11 @@ const Explore = () => {
         </Typography>
 
         <Button
+          className='explore-btn'
           size='large'
-          sx={{
-            bgcolor: "#01528C",
-            color: "#A3BB13",
-            borderRadius: "12px",
-            fontWeight: "bold",
-          }}
           onClick={() =>
             window.scrollBy({
-              top: -1850,
+              top: -1900, // Ajusta los píxeles que bajan exactos hasta tus tours
               behavior: "smooth",
             })
           }

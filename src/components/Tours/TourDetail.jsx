@@ -10,7 +10,7 @@ import {
   Stack,
   Container,
 } from "@mui/material";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import MethodGet from "../../config/Service";
 import MainLayout from "../Layout/Layout";
 
@@ -161,25 +161,29 @@ const TourDetail = () => {
                 ${tour.price} MXN
               </Typography>
 
-              <Button
-                fullWidth
-                size='large'
-                variant='contained'
-                startIcon={<WhatsAppIcon />}
-                href={tour.whatsapp_link}
+              <Link
+                to={`https://wa.me/${tour.whatsapp_link}?text=Me interesa el tour ${slug}`}
                 target='_blank'
-                sx={{
-                  py: 2,
-                  fontSize: "17px",
-                  fontWeight: 800,
-                  bgcolor: "#A3BB13",
-                  color: "#01528C",
-                  borderRadius: 3,
-                  "&:hover": { bgcolor: "#91a911" },
-                }}
+                style={{ textDecoration: "none" }}
               >
-                Reservar ahora
-              </Button>
+                <Button
+                  fullWidth
+                  size='large'
+                  variant='contained'
+                  startIcon={<WhatsAppIcon />}
+                  sx={{
+                    py: 2,
+                    fontSize: "17px",
+                    fontWeight: 800,
+                    bgcolor: "#A3BB13",
+                    color: "#01528C",
+                    borderRadius: 3,
+                    "&:hover": { bgcolor: "#91a911" },
+                  }}
+                >
+                  Reservar ahora
+                </Button>
+              </Link>
 
               <Divider sx={{ my: 4 }} />
 

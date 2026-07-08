@@ -23,6 +23,8 @@ import TimeIcon from "../icons/TimeIcon";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import StyleIcon from "@mui/icons-material/Style";
 import Acapulco from "../../assets/acapulco.webp";
+import DescriptionIcon from "../icons/DescriptionIcon";
+import { FormatCurrency } from "../../utils/FormatCurrency";
 const TourCard = ({ tour, onOpen }) => {
   return (
     <Paper elevation={3} sx={{ borderRadius: "12px" }}>
@@ -73,7 +75,7 @@ const TourCard = ({ tour, onOpen }) => {
           {tour.whatsapp_link && (
             <Tooltip title='Contactar por WhatsApp'>
               <IconButton
-                href={tour.whatsapp_link}
+                href={`https://wa.me/${tour.whatsapp_link}?text=¡Hola! Me interesa el tour ${tour.slug}`}
                 target='_blank'
                 onClick={(e) => e.stopPropagation()} // 🔥 CLAVE
                 sx={{
@@ -111,7 +113,7 @@ const TourCard = ({ tour, onOpen }) => {
 
           <Stack spacing={0.8} sx={{ color: "text.secondary", mb: 2 }}>
             <Stack direction='row' spacing={1} alignItems='center'>
-              <LocationIcon width={28} />
+              <DescriptionIcon width={28} />
               <Typography variant='body2'>{tour.short_description}</Typography>
             </Stack>
             <Stack direction='row' spacing={1} alignItems='center'>
@@ -137,7 +139,7 @@ const TourCard = ({ tour, onOpen }) => {
             }}
           >
             <Typography variant='h6' fontWeight={800}>
-              ${tour.price} MXN
+              {FormatCurrency(Number(tour.price))} MXN
             </Typography>
             <Typography variant='caption'>por persona</Typography>
           </Box>

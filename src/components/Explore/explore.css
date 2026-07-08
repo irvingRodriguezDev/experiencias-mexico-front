@@ -59,47 +59,128 @@
 
 /* BOTÓN */
 .explore-btn {
-  background: #ffffff !important;
-  color: #5a2dfc !important;
-  padding: 14px 32px !important;
-  border-radius: 14px !important;
-  font-weight: 600 !important;
+  background-color: #01528c !important; /* Tu azul marino institucional */
+  color: #ffffff !important; /* Texto blanco puro para legibilidad total */
+  padding: 12px 32px !important;
+  border-radius: 12px !important;
+  font-weight: 700 !important;
   text-transform: none !important;
-  transition: all 0.3s ease !important;
+  border: 2px solid transparent !important; /* Base para el efecto hover */
+  transition: all 0.25s ease-in-out !important;
+  box-shadow: none !important; /* Estética plana, sin sombras pesadas */
 }
 
+/* EFECTO INTERACTIVO PLANO (HOVER) */
 .explore-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+  background-color: transparent !important;
+  color: #01528c !important; /* Invierte el color al pasar el mouse */
+  border: 2px solid #01528c !important; /* Crea un borde limpio */
+  transform: translateY(-1px); /* Elevación milimétrica y sutil */
+  box-shadow: none !important;
 }
 
 /* WATERMARK */
 .explore-watermark {
   position: absolute;
-  bottom: 40px;
+  bottom: 20px;
   width: 100%;
   text-align: center;
 
-  font-size: 96px;
-  font-weight: 800;
-  letter-spacing: 6px;
+  font-family: "Arial Black", "Impact", sans-serif;
+  font-size: 110px;
+  font-weight: 900;
+  letter-spacing: 2px;
   text-transform: uppercase;
 
+  /* 🎨 DEGRADADO + PATRÓN SEAMLESS (Diseño geométrico tradicional) */
+  background: 
+    /* Capa 1: El patrón geométrico repetitivo (grecas/rombos tradicionales) */ linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.15) 25%,
+        transparent 25%
+      ) -10px 0,
+    linear-gradient(225deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%) -10px
+      0,
+    linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%),
+    linear-gradient(315deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%),
+    /* Capa 2: Tus colores de base estilo parador fotográfico */
+      linear-gradient(
+        90deg,
+        #e53935 0%,
+        /* Rojo Coral */ #d81b60 20%,
+        /* Rosa Mexicano */ #ffa000 40%,
+        /* Amarillo Sol */ #a3bb13 60%,
+        /* Tu verde lima institucional */ #00acc1 80%,
+        /* Azul Turquesa Caribe */ #01528c 100%
+          /* Tu azul marino institucional */
+      );
+
+  /* El tamaño del patrón geométrico dentro de la letra (ajusta para hacerlo más chico o grande) */
+  background-size: 20px 20px, 20px 20px, 20px 20px, 20px 20px, 200% auto;
+
+  /* Corta todo para que se quede únicamente dentro del texto */
+  -webkit-background-clip: text;
+  background-clip: text;
   color: transparent;
-  -webkit-text-stroke: 2px rgba(255, 255, 255, 0.9);
 
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.35),
-    0 0 20px rgba(255, 255, 255, 0.25), 0 0 40px rgba(255, 255, 255, 0.15);
+  /* Opacidad sutil para que conviva de forma plana con la ola */
+  opacity: 0.82;
 
-  opacity: 0.85;
-  mix-blend-mode: overlay;
-
-  z-index: 2;
+  transform: rotate(-1deg) scale(1.02);
+  z-index: 1;
   pointer-events: none;
+  white-space: nowrap;
+
+  /* Mantenemos la animación para que los colores se desplacen */
+  animation: shineLetters 12s linear infinite;
 }
 
-/* RESPONSIVE */
-@media (max-width: 768px) {
+/* Animación que desplaza el degradado pero mantiene fijo el patrón texturizado */
+@keyframes shineLetters {
+  0% {
+    background-position: -10px 0, -10px 0, 0 0, 0 0, 0% center;
+  }
+  100% {
+    background-position: -10px 0, -10px 0, 0 0, 0 0, 200% center;
+  }
+}
+
+/* ========================================================
+   📱 RESPONSIVO MULTIDISPOSITIVO (BREAKPOINTS)
+   ======================================================== */
+
+/* 1. Teléfonos Pequeños (xs: menos de 480px) - Optimizado para pantallas compactas */
+@media (max-width: 480px) {
+  .explore {
+    height: 65vh;
+    min-height: 420px;
+  }
+
+  .explore-eyebrow {
+    font-size: 13px;
+  }
+
+  .explore-title {
+    font-size: 24px;
+    line-height: 1.3;
+    margin: 16px 0 24px;
+  }
+
+  .explore-btn {
+    padding: 10px 24px !important;
+    font-size: 14px !important;
+  }
+
+  .explore-watermark {
+    font-size: 32px;
+    bottom: 15px;
+    letter-spacing: 0.5px;
+    background-size: 8px 8px, 8px 8px, 8px 8px, 8px 8px, 200% auto;
+  }
+}
+
+/* 2. Teléfonos Medianos/Grandes y Tablets Retrato (sm: 481px a 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
   .explore {
     height: 70vh;
     min-height: 500px;
@@ -110,12 +191,47 @@
   }
 
   .explore-title {
-    font-size: 28px;
+    font-size: 32px;
     line-height: 1.25;
   }
 
   .explore-watermark {
-    font-size: 48px;
+    font-size: 54px;
     bottom: 20px;
+    letter-spacing: 1px;
+    background-size: 12px 12px, 12px 12px, 12px 12px, 12px 12px, 200% auto;
+  }
+}
+
+/* 3. Tablets Paisaje y Laptops Chicas (md: 769px a 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .explore {
+    height: 80vh;
+    min-height: 550px;
+  }
+
+  .explore-title {
+    font-size: 38px;
+  }
+
+  .explore-watermark {
+    font-size: 80px;
+    bottom: 22px;
+    letter-spacing: 2px;
+    background-size: 16px 16px, 16px 16px, 16px 16px, 16px 16px, 200% auto;
+  }
+}
+
+/* 4. Pantallas Grandes o de Alta Resolución (lg/xl: más de 1440px) */
+@media (min-width: 1441px) {
+  .explore-title {
+    font-size: 52px;
+    margin-bottom: 40px;
+  }
+
+  .explore-watermark {
+    font-size: 140px; /* Escalado premium para monitores grandes */
+    bottom: 30px;
+    background-size: 24px 24px, 24px 24px, 24px 24px, 24px 24px, 200% auto;
   }
 }

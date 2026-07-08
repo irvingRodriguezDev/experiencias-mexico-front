@@ -12,7 +12,7 @@ const RouteSection = ({ form, onChange, typeUnit, setTypeUnit, setForm }) => {
 
   return (
     <Box sx={{ mb: 5 }}>
-      <SectionTitle number='03'>Ruta y unidad</SectionTitle>
+      <SectionTitle number='02'>Ruta y unidad</SectionTitle>
       <Grid container spacing={2.5}>
         <Grid size={{ xs: 12, sm: 6 }}>
           <FieldLabel required>Ciudad de origen</FieldLabel>

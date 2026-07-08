@@ -19,6 +19,7 @@ import WhatsAppIcon from "../icons/WhatsAppIcon";
 import CalendarIcon from "../icons/CalendarIcon";
 import FormatDate from "../../utils/FormatDate";
 import StyleIcon from "@mui/icons-material/Style";
+import { Link } from "react-router-dom";
 
 export default function TourDetailModal({ open, onClose, tour, loading }) {
   if (loading) {
@@ -264,28 +265,32 @@ export default function TourDetailModal({ open, onClose, tour, loading }) {
                 ${tour.price} MXN
               </Typography>
 
-              <Button
-                fullWidth
-                size='large'
-                variant='contained'
-                startIcon={<WhatsAppIcon width={28} />}
-                href={tour.whatsapp_link}
+              <Link
+                to={`https://wa.me/${tour.whatsapp_link}?text=¡Hola! Me interesa el tour ${tour.slug}`}
                 target='_blank'
-                sx={{
-                  py: { xs: 1.5, md: 2 },
-                  fontSize: {
-                    xs: "0.95rem",
-                    md: "1rem",
-                  },
-                  fontWeight: 800,
-                  bgcolor: "#A3BB13",
-                  color: "#01528C",
-                  borderRadius: 3,
-                  "&:hover": { bgcolor: "#A3BB13", color: "#01528C" },
-                }}
+                style={{ textDecoration: "none" }}
               >
-                Reservar ahora
-              </Button>
+                <Button
+                  fullWidth
+                  size='large'
+                  variant='contained'
+                  startIcon={<WhatsAppIcon width={28} />}
+                  sx={{
+                    py: { xs: 1.5, md: 2 },
+                    fontSize: {
+                      xs: "0.95rem",
+                      md: "1rem",
+                    },
+                    fontWeight: 800,
+                    bgcolor: "#A3BB13",
+                    color: "#01528C",
+                    borderRadius: 3,
+                    "&:hover": { bgcolor: "#A3BB13", color: "#01528C" },
+                  }}
+                >
+                  Reservar ahora
+                </Button>
+              </Link>
 
               <Divider sx={{ my: 4 }} />
 

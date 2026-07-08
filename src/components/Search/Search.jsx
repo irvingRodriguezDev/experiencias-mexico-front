@@ -43,6 +43,7 @@ const SearchComponent = ({
             onChange={(e) => onChange(e.target.value)}
             placeholder={placeholder}
             variant='outlined'
+            autoComplete='off'
             fullWidth
             type='text'
             sx={{

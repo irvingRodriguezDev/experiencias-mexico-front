@@ -5,7 +5,7 @@ import { inputSx } from "./formStyles";
 
 const ContactSection = ({ form, onChange }) => (
   <Box sx={{ mb: 5 }}>
-    <SectionTitle number='02'>Datos del solicitante</SectionTitle>
+    <SectionTitle number='04'>Datos del solicitante</SectionTitle>
     <Grid container spacing={2.5}>
       <Grid size={12}>
         <FieldLabel required>Nombre completo</FieldLabel>

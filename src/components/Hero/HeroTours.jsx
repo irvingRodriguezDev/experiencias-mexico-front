@@ -8,6 +8,7 @@ import WhatsAppIcon from "../icons/WhatsAppIcon";
 import CalendarIcon from "../icons/CalendarIcon";
 import FormatDate from "../../utils/FormatDate";
 import Acapulco from "../../assets/Acapulco_uno.webp";
+import { FormatCurrency } from "../../utils/FormatCurrency";
 const HeroTours = ({ tours = [] }) => {
   if (!tours.length) return null;
 
@@ -140,14 +141,14 @@ const HeroTours = ({ tours = [] }) => {
                     component='span'
                     sx={{ fontWeight: 700, fontSize: "1.8rem" }}
                   >
-                    ${tour.price}
+                    {FormatCurrency(Number(tour.price))} MXN
                   </Box>{" "}
                   / Persona
                 </Typography>
 
                 {/* CTA */}
                 <Button
-                  href={tour.whatsapp_link}
+                  href={`https://wa.me/${tour.whatsapp_link}?text= ¡Hola! Me interesa el tour ${tour.slug}`}
                   target='_blank'
                   size='large'
                   startIcon={<WhatsAppIcon width={28} />}
